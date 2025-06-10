@@ -1,0 +1,50 @@
+{
+        "type": "origins:active_self",
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:play_sound",
+                "category": "players",
+                "sound": "minecraft:entity.player.attack.nodamage",
+                "volume": 3.5
+            },
+            {
+                "type": "origins:delay",
+                "ticks": 5,
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:play_sound",
+                            "category": "players",
+                            "sound": "minecraft:entity.splash_potion.break",
+                            "volume": 4.5
+                        }
+                    ]
+                }
+            }
+        ]
+    },
+    "cooldown": 220,
+    "hud_render": {
+        "should_render": false
+    },
+    "condition":{
+        "type":"origins:and",
+        "conditions": [
+            {
+                "type": "origins:resource",
+                "resource": "coraa:seeker_bar",
+                "comparison": "==",
+                "compare_to": 0
+            },
+                        {
+                "type": "origins:resource",
+                "resource": "coraa:resentment_bar",
+                "comparison": ">=",
+                "compare_to": 30
+            }
+        ]
+    }
+}

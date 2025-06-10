@@ -1,0 +1,21 @@
+{
+  "type": "origins:multiple",
+  "antijump": {
+    "type": "origins:modify_jump",
+    "modifier": {
+      "operation": "set_total",
+      "value": 0
+    }
+  },
+  "anti_move": {
+    "type": "origins:modify_velocity",
+    "modifier": {
+      "value": 0,
+      "operation": "set_total"
+    },
+    "axes": [
+      "x",
+      "z"
+    ]
+  }
+}
