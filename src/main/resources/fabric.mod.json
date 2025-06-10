@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "coraa",
+	"version": "${version}",
+	"name": "Covenant",
+	"description": "Covenant of Radiance and Abyss",
+	"authors": [
+		"Theezamar"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/coraa/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.coraa.Covenant"
+		],
+		"client": [
+			"com.coraa.CovenantClient"
+		],
+		"fabric-datagen": [
+			"com.coraa.CovenantDataGenerator"
+		]
+	},
+	"mixins": [
+		"coraa.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.16.14",
+		"minecraft": "~1.20.2",
+		"origins": "*",
+		"java": ">=17",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
