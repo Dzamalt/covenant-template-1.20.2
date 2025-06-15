@@ -1,0 +1,165 @@
+{
+    "type": "origins:multiple",
+    "solenne_water_antiregen": {
+        "type": "origins:disable_regen",
+        "condition": {
+            "type": "origins:or",
+            "conditions": [
+                        {
+            "type": "origins:on_block",
+        "block_condition": {
+          "type": "origins:offset",
+          "condition": {
+            "type": "origins:block",
+            "block": "minecraft:water",
+            "inverted": true
+          },
+          "y": 1
+        }
+        },
+        {
+            "type": "origins:in_rain",
+            "inverted": true
+        }
+            ]
+        }
+    },
+    "solenne_water_antiheal":{
+            "type": "origins:modify_healing",
+    "modifier": {
+        "operation": "multiply_total",
+        "value": -0.25
+    },
+            "condition": {
+            "type": "origins:or",
+            "conditions": [
+                        {
+            "type": "origins:on_block",
+        "block_condition": {
+          "type": "origins:offset",
+          "condition": {
+            "type": "origins:block",
+            "block": "minecraft:water",
+            "inverted": true
+          },
+          "y": 1
+        }
+        },
+        {
+            "type": "origins:in_rain",
+            "inverted": true
+        }
+            ]
+        }
+    },
+    "solenne_resolve_drown":{
+            "type": "origins:action_when_damage_taken",
+    "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "coraa:resolvement_bar",
+      "change": -1,
+      "operation": "add"
+    },
+    "damage_condition": {
+          "type": "origins:in_tag",
+          "tag": "minecraft:is_drowning"
+    },
+    "cooldown": 50
+    },
+    "solenne_resolve_dark":{
+                  "type": "origins:action_when_damage_taken",
+    "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "coraa:resolvement_bar",
+      "change": -1,
+      "operation": "add"
+    },
+    "condition": {
+          "type": "origins:brightness",
+          "comparison": "<=",
+          "compare_to": 0.06
+    },
+    "cooldown": 100  
+    },
+    "solenne_blindness":{
+            "type": "origins:stacking_status_effect",
+    "min_stacks": -3,
+    "max_stacks": 1,
+    "duration_per_stack": 60,
+    "tick_rate": 20,
+    "effect": {
+        "effect": "minecraft:blindness",
+        "is_ambient": true,
+        "show_particles": false,
+        "show_icon": false
+    },
+    "condition": {
+          "type": "origins:brightness",
+          "comparison": "<=",
+          "compare_to": 0.06
+    }
+    },
+    "solenne_meleevuln":{
+            "type": "origins:modify_damage_taken",
+    "bientity_condition": {
+        "type": "origins:distance",
+        "comparison": "<=",
+        "compare_to": 3
+    },
+    "modifier": {
+        "operation": "multiply_base",
+        "value": 1.2
+    }
+    },
+    "solenne_meleenerf":{
+        "type": "origins:modify_damage_dealt",
+        "bientity_condition": {
+        "type": "origins:distance",
+        "comparison": "<=",
+        "compare_to": 3
+        },
+        "modifier":{
+            "operation":"multiply_base",
+            "value": 0.8
+        }
+    },
+    "solenne_range_boost":{
+        "type": "origins:self_action_on_hit",
+        "damage_condition": {
+        "type": "origins:in_tag",
+        "tag": "minecraft:is_projectile"
+        },
+        "entity_action": {
+            "type": "origins:apply_effect",
+            "effect": {
+                "effect": "minecraft:speed",
+                "is_ambient": true,
+                "show_icon": false,
+                "show_particles": false,
+                "duration": 60
+            }
+        },
+        "cooldown": 20
+    },
+  "callback_team":{
+    "type": "origins:action_on_callback",
+    "entity_action_gained": {
+      "type": "origins:and",
+      "actions": [
+        {
+        "type": "origins:execute_command",
+        "command": "team add solenne_shooters"
+        },
+        {
+        "type": "origins:execute_command",
+        "command": "team join solenne_shooters @s"
+        }
+      ]
+    },
+    "entity_action_lost": {
+        "type": "origins:execute_command",
+        "command": "team leave @s"
+    },
+    "execute_chosen_when_orb": true
+  }
+}

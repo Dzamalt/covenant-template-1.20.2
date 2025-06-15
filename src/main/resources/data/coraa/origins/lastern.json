@@ -1,10 +1,14 @@
 {
   "powers": [
-    "coraa:resentment_bar"
+    "coraa:resentment_bar",
+    "coraa:seeker_bar",
+    "coraa:shadow_screen",
+    "coraa:lastern_passives",
+    "coraa:lastern_descsimple"
   ],
   "icon": "minecraft:flint",
   "order": 1,
   "impact": 1,
-  "name": "§5Lästern §r§f§1[Abyss]",
-  "description": "Born in silence, they walk behind the light. Their fury grows where others forget. Where there's no flame, they rise"
+  "name": "§5Lästern §r§f§1§l§n[Abyss]",
+  "description": "§f§oBorn in silence, §r§7they walk §fbehind the light.§r\n§c§oTheir fury grows§r §7where others forget.§r\n§0§oWhere there is no flame, §4they rise.§r"
 }

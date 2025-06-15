@@ -1,0 +1,92 @@
+{
+    "type": "origins:action_on_hit",
+    "damage_condition": {
+        "type": "origins:in_tag",
+        "tag": "minecraft:is_projectile"
+    },
+    "bientity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:if_else",
+                "condition": {
+                    "type": "origins:target_condition",
+                    "condition": {
+                        "type": "origins:and",
+                        "conditions": [
+                            {
+                                "type": "origins:living"
+                            },
+                            {
+                                "type": "origins:power",
+                                "power": "coraa:solaris_eye_mark"
+                            }
+                        ]
+                    }
+                
+                    },
+                    "if_action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "power revoke @s coraa:solaris_eye_mark"
+                                }
+                            },
+                            {
+                                "type": "origins:actor_action",
+                                "action": {
+                                    "type": "origins:change_resource",
+                                    "resource": "coraa:resolvement_bar",
+                                    "change": 1,
+                                    "operation": "add"
+                                }
+                            }
+                        ]
+                    },
+                    "else_action": {
+                        "type": "origins:if_else",
+                        "condition": {
+                            "type": "origins:actor_condition",
+                            "condition": {
+                                    "type": "origins:resource",
+                                    "resource": "coraa:solenne_solaris_cooldown",
+                                    "comparison": "==",
+                                    "compare_to": 0
+                            }
+                        },
+                        "if_action": {
+                            "type": "origins:and",
+                            "actions": [
+                                {
+                                        "type": "origins:target_action",
+                            "action": {
+                                "type": "origins:execute_command",
+                                "command": "power grant @s coraa:solaris_eye_mark"
+                            }
+                                },
+                                {
+                                    "type": "origins:actor_action",
+                                    "action": {
+                                        "type": "origins:execute_command",
+                                        "command": "resource change @s coraa:solenne_solaris_cooldown 1"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+            },
+            {
+                "type": "origins:actor_action",
+                "action": {
+                    "type": "origins:play_sound",
+                    "category": "players",
+                    "sound": "minecraft:entity.splash_potion.break",
+                    "volume": 4.5
+                }
+            }
+        ]
+    }
+}

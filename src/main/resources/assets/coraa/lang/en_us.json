@@ -2,5 +2,9 @@
   "coraa.origin.lastern": "Shadow Assassin",
   "coraa.origin.lastern.description": "A stealthy assassin who strikes from the shadows.",
   "coraa.powers.resentment_bar": "§c§lResentment",
-  "coraa.powers.resentment_bar.description": "Fuelled by grudge, shaped by gloom — it stirs in silence and strikes in shadow."
+  "coraa.powers.resentment_bar.description": "Fuelled by grudge, shaped by gloom — it stirs in silence and strikes in shadow.",
+  "death.attack.coraa.schattenslash": "%1$s got ambushed from the shadows",
+  "death.attack.coraa.schattenslash.player": "%1$s's got ambushed by %2$s from the shadows",
+  "death.attack.coraa.solaris_eclat": "%1$s's torso got pierced by holy bullets",
+  "death.attack.coraa.solaris_eclat.player": "%2$s's holy bullets pierced through %2$s"
 }

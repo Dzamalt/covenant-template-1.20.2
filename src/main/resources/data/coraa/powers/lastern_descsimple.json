@@ -1,0 +1,17 @@
+{
+  "type": "origins:simple",
+  "name": "§5§l✦ Abyssal Calm ✦§r",
+  "badges": [
+    {
+      "type": "origins:tooltip",
+      "sprite": "origins:textures/gui/community/silent/badge/icons/sky/moon_full.png",
+      "text": "§7At low light level §7, gain §a2 Resentment/sec§7.§r"
+    },
+    {
+      "type": "origins:tooltip",
+      "sprite": "origins:textures/gui/community/silent/badge/icons/sky/moon_full.png",
+      "text": "§7While afflicted by §8Wither§7, restore §a3 Resentment/sec§7 and gain §emovement speed§7.  \n§7Also immune to §8blindness.§r"
+    }
+  ],
+  "description": "§0§oWhere lives decay, you thrive.§r§8§oWhere no light dwells, power grows.§r"
+}

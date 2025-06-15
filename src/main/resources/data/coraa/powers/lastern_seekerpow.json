@@ -1,0 +1,131 @@
+{
+  "type": "origins:multiple",
+  "lastern_overlay": {
+    "type": "origins:overlay",
+    "texture": "coraa:textures/misc/gestalt_placeholder.png",
+    "strength": 1.0,
+    "red": 1.0,
+    "green": 1.0,
+    "blue": 1.0,
+    "draw_mode": "texture",
+    "draw_phase": "below_hud",
+    "hide_with_hud": false,
+    "visible_in_third_person": true,
+    "condition": {
+      "type": "origins:resource",
+      "resource": "coraa:seeker_bar",
+      "comparison": "==",
+      "compare_to": 1
+    }
+  },
+  "lastern_speed": {
+    "type": "origins:attribute",
+    "modifier": {
+      "attribute": "minecraft:generic.movement_speed",
+      "value": 1.05,
+      "operation": "multiply_total"
+    }
+  },
+  "lastern_stunable": {
+    "type": "origins:action_when_damage_taken",
+    "entity_action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:apply_effect",
+          "effect": {
+            "effect": "minecraft:slowness",
+            "duration": 40,
+            "amplifier": 2
+          }
+        },
+        {
+          "type": "origins:apply_effect",
+          "effect": {
+            "effect": "minecraft:weakness",
+            "duration": 40,
+            "amplifier": 1
+          }
+        },
+        {
+
+          "type": "origins:change_resource",
+          "resource": "coraa:seeker_bar",
+          "change": 0,
+          "operation": "set"
+        }
+      ]
+    },
+    "cooldown": 40
+  },
+  "lastern_extradmg": {
+    "type": "origins:modify_damage_taken",
+    "modifier": {
+      "operation": "multiply_base",
+      "value": 1.5
+    }
+  },
+  "lastern_invis": {
+    "type": "origins:invisibility",
+    "render_armor": false
+  },
+  "lastern_resent_decrease": {
+    "type": "origins:action_over_time",
+    "entity_action": {
+      "type": "origins:if_else",
+      "condition": {
+        "type": "origins:resource",
+        "resource": "coraa:resentment_bar",
+        "comparison": "<=",
+        "compare_to": 4
+      },
+      "if_action": {
+        "type": "origins:change_resource",
+        "resource": "coraa:seeker_bar",
+        "change": 0,
+        "operation": "set"
+      },
+      "else_action": {
+        "type": "origins:change_resource",
+        "resource": "coraa:resentment_bar",
+        "change": -4,
+        "operation": "add"
+      }
+    },
+    "interval": 20,
+    "condition": {
+      "type": "origins:resource",
+      "resource": "coraa:seeker_bar",
+      "comparison": "==",
+      "compare_to": 1
+    }
+  },
+  "lastern_seeker_punch_check": {
+    "type": "origins:self_action_on_hit",
+    "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "coraa:seeker_bar",
+      "change": 0,
+      "operation": "set"
+    },
+    "cooldown": 20
+  },
+  "lastern_seeker_block_place": {
+    "type": "origins:action_on_block_place",
+    "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "coraa:seeker_bar",
+      "change": 0,
+      "operation": "set"
+    }
+  },
+  "lastern_particle": {
+    "type": "origins:particle",
+    "particle": "minecraft:portal",
+    "force": true,
+    "frequency": 9,
+    "visible_while_invisible": true,
+    "visible_in_first_person": true
+  }
+
+}

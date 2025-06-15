@@ -1,0 +1,14 @@
+{
+  "powers": [
+    "coraa:resolvement_bar",
+    "coraa:solaris_eclat",
+    "coraa:solenne_solaris_eye",
+    "coraa:solenne_solaris_cooldown",
+    "coraa:solenne_passives"
+  ],
+  "icon": "minecraft:diamond",
+  "order": 1,
+  "impact": 2,
+  "name": "§6Solenne §r§f§e§l§n[Radiance]",
+  "description": "§e§oBorn where dusk kisses the dust§r§r, walks with §6§othe judgment of the sun§r.  Their bullets burn with §emercy§r — or §4wrath§r.  Light is not kind. Light is not cruel. It simply §e§o§lshines.§r"
+}

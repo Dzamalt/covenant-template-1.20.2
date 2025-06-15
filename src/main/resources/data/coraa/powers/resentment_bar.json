@@ -2,11 +2,20 @@
     "type": "origins:resource",
     "min": 0,
     "max": 100,
+    "start_value": 50,
     "hud_render": {
         "should_render": true,
         "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
         "bar_index": 17
     },
-    "name": "§c§lResentment",
-    "description": "Fuelled by grudge, shaped by gloom — it stirs in silence and strikes in shadow."
+    "name": "§5§l✦ Resentment ✦§r",
+    "badges": [
+    {
+        "type": "origins:tooltip",
+        "sprite": "origins:textures/gui/community/silent/badge/icons/sky/moon_full.png",
+        "text": "§7A unique resource bar for all §r§f§1§l§nAbyss§r origins. Maxes at §a100§7.  \n§7Each origin draws upon it differently — through §5curses§7, §8stealth§7, or §cvengeance.§r"
+
+    }
+        ],
+    "description": "§4§oFuelled by grudge, shaped by gloom§7 — §8it stirs in silence §0and §7strikes in §0shadow§7.§r\n"
 }

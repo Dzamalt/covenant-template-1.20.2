@@ -1,0 +1,105 @@
+{
+   "type": "origins:active_self",
+  "entity_action": {
+    "type": "origins:and",
+    "actions": [
+      {
+        "type": "origins:play_sound",
+        "category": "players",
+        "sound": "minecraft:entity.splash_potion.break",
+        "volume": 4.5
+      },
+      {
+        "type": "origins:execute_command",
+        "command": "summon armor_stand ^ ^0.5 ^1.5 {NoGravity:1b,Invisible:1b,Invulnerable:1b,Tags:[\"schattenslash\"]}"
+      },
+      {
+        "type": "origins:change_resource",
+        "resource": "coraa:coraa_antidmg",
+        "change": 1,
+        "operation": "set"
+      },
+      {
+        "type": "origins:delay",
+        "ticks": 1,
+        "action": {
+          "type": "origins:and",
+          "actions": [
+            {
+              "type": "origins:area_of_effect",
+              "radius": 3,
+              "bientity_action": {
+                "type": "origins:target_action",
+                "action": {
+                  "type": "origins:and",
+                  "actions": [
+                    {
+                      "type": "origins:area_of_effect",
+                      "radius": 1,
+                      "bientity_action": {
+                        "type": "origins:target_action",
+                        "action": {
+                          "type": "origins:and",
+                          "actions": [
+                            {
+                              "type": "origins:damage",
+                              "amount": 9,
+                              "damage_type": "coraa:schattenslash"
+                            },
+                            {
+                              "type": "origins:apply_effect",
+                              "effect": {
+                                "effect": "minecraft:slowness",
+                                "duration": 70,
+                                "amplifier": 2
+                              }
+                            }
+                          ]
+                        }
+                      },
+                      "bientity_condition": {
+                        "type": "origins:target_condition",
+                        "condition": {
+                          "type": "origins:resource",
+                          "resource": "coraa:coraa_antidmg",
+                          "comparison": "==",
+                          "compare_to": 0
+                        }
+                      }
+                    },
+                    {
+                      "type": "origins:execute_command",
+                      "command": "kill @s"
+                    }
+                  ]
+                }
+              },
+              "bientity_condition": {
+                "type": "origins:target_condition",
+                "condition": {
+                  "type": "origins:nbt",
+                  "nbt": "{Tags: [\"schattenslash\"]}"
+                }
+              }
+            },
+            {
+              "type": "origins:change_resource",
+              "resource": "coraa:coraa_antidmg",
+              "change": 0,
+              "operation": "set"
+            }
+
+          ]
+        }
+      },
+      {
+        "type": "origins:change_resource",
+        "resource": "coraa:seeker_bar",
+        "change": 0,
+        "operation": "set"
+      }
+
+    ]
+  },
+  "cooldown": 20
+}

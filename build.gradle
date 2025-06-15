@@ -1,3 +1,6 @@
+
+
+
 plugins {
 	id 'fabric-loom' version "${loom_version}"
 	id 'maven-publish'
@@ -53,6 +56,14 @@ repositories {
 	maven {
 		url "https://maven.terraformersmc.com/"
 	}
+	maven {
+		name = "GeckoLib"
+		url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/"
+	}
+	maven {
+		name = "Modrinth"
+		url = "https://api.modrinth.com/maven"
+	}
 	mavenCentral()
 }
 
@@ -70,8 +81,9 @@ dependencies {
 	modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	// GeckoLib
+	modImplementation "software.bernie.geckolib:geckolib-fabric-1.20.2:4.3.1" // replace with latest if needed
 
-	
 }
 
 processResources {
