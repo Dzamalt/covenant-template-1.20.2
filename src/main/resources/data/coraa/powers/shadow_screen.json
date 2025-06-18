@@ -1,102 +1,156 @@
 {
-    "type": "origins:active_self",
-    "entity_action": {
-        "type": "origins:and",
-        "actions": [
+  "type": "origins:active_self",
+  "entity_action": {
+    "type": "origins:and",
+    "actions": [
+      {
+        "type": "origins:play_sound",
+        "category": "players",
+        "sound": "minecraft:entity.player.attack.nodamage",
+        "volume": 4.5
+      },
+      {
+        "type": "origins:play_sound",
+        "category": "players",
+        "sound": "coraa:lastern_schattenwurf",
+        "volume": 8
+      },
+      {
+        "type": "origins:execute_command",
+        "command": "function coraa:eyeblock_particle"
+      },
+      {
+        "type": "origins:execute_command",
+        "command": "power grant @s coraa:startlag_slower"
+      },
+      {
+        "type": "origins:apply_effect",
+        "effect": {
+          "effect": "minecraft:mining_fatigue",
+          "duration": 20,
+          "amplifier": 3,
+          "is_ambient": true,
+          "show_icon": false,
+          "show_particles": false
+        }
+      },
+      {
+        "type": "origins:swing_hand",
+        "hand": "MAIN_HAND"
+      },
+      {
+        "type": "origins:delay",
+        "ticks": 10,
+        "action": {
+          "type": "origins:and",
+          "actions": [
             {
+              "type": "origins:chance",
+              "chance": 0.2,
+              "action": {
                 "type": "origins:play_sound",
                 "category": "players",
-                "sound": "minecraft:entity.player.attack.nodamage",
-                "volume": 3.5
+                "sound": "coraa:lastern_laugh",
+                "volume": 9
+              },
+              "fail_action": {
+                "type": "origins:play_sound",
+                "category": "players",
+                "sound": "minecraft:entity.splash_potion.break",
+                "volume": 6.5
+              }
             },
             {
-                "type": "origins:delay",
-                "ticks": 5,
-                "action": {
-                    "type": "origins:and",
-                    "actions": [
+              "type": "origins:change_resource",
+              "resource": "coraa:resentment_bar",
+              "change": -30,
+              "operation": "add"
+            },
+            {
+              "type": "origins:execute_command",
+              "command": "function coraa:throw_smoke_bomb"
+            },
+            {
+              "type": "origins:area_of_effect",
+              "radius": 5,
+              "shape": "sphere",
+              "bientity_action": {
+                "type": "origins:and",
+                "actions": [
+                  {
+                    "type": "origins:add_velocity",
+                    "z": 0.5
+                  },
+                  {
+                    "type": "origins:target_action",
+                    "action": {
+                      "type": "origins:and",
+                      "actions": [
                         {
-                            "type": "origins:play_sound",
-                            "category": "players",
-                            "sound": "minecraft:entity.splash_potion.break",
-                            "volume": 4.5
+                          "type": "origins:apply_effect",
+                          "effect": {
+                            "effect": "minecraft:blindness",
+                            "duration": 160,
+                            "amplifier": 1
+                          }
                         },
                         {
-                            "type": "origins:change_resource",
-                            "resource": "coraa:resentment_bar",
-                            "change": -30,
-                            "operation": "add"
-                        },
-                        {
-                            "type": "origins:area_of_effect",
-                            "radius": 5 ,
-                            "shape": "sphere",
-                            "bientity_action": {
-                                "type": "origins:target_action",
-                                "action": {
-                                    "type": "origins:and",
-                                    "actions": [
-                                        {
-                                            "type": "origins:apply_effect",
-                                            "effect": {
-                                                "effect": "minecraft:blindness",
-                                                "duration": 160,
-                                                "amplifier": 1
-                                            }
-                                        },
-                                        {
-                                           "type": "origins:add_velocity",
-                                            "y": 0.5
-                                        },
-                                        {
-                                            "type": "origins:if_else",
-                                            "condition": {
-                                                "type": "origins:entity_type",
-                                                "entity_type": "minecraft:player",
-                                                "inverted": true
-                                            },
-                                            "if_action": {
-                                                "type": "origins:damage",
-                                                "amount": 8,
-                                                "damage_type": "minecraft:magic"
-                                            }
-                                        }
-                                    ]
-                                }
-                            }
-                        },
-                        {
-                            "type": "origins:change_resource",
-                            "resource": "coraa:seeker_bar",
-                            "change": 1,
-                            "operation": "set"
+                          "type": "origins:if_else",
+                          "condition": {
+                            "type": "origins:entity_type",
+                            "entity_type": "minecraft:player",
+                            "inverted": true
+                          },
+                          "if_action": {
+                            "type": "origins:damage",
+                            "amount": 8,
+                            "damage_type": "minecraft:magic"
+                          }
                         }
-                    ]
-                }
-            }
-        ]
-    },
-    "cooldown": 220,
-    "hud_render": {
-        "should_render": false
-    },
-    "condition":{
-        "type":"origins:and",
-        "conditions": [
-            {
-                "type": "origins:resource",
-                "resource": "coraa:seeker_bar",
-                "comparison": "==",
-                "compare_to": 0
+                      ]
+                    }
+                  }
+                ]
+              }
             },
-                        {
-                "type": "origins:resource",
-                "resource": "coraa:resentment_bar",
-                "comparison": ">=",
-                "compare_to": 30
+            {
+              "type": "origins:change_resource",
+              "resource": "coraa:seeker_bar",
+              "change": 1,
+              "operation": "set"
+            },
+            {
+              "type": "origins:execute_command",
+              "command": "power revoke @s coraa:startlag_slower"
             }
-        ]
-    },
-    "name": "§5§l✦ Schattenwurf ✦§r",
-    "description": "§5§oUncork your hate — let them choke on it.§r\n§7Consume resentment and hurl a fragile vial of malice, §fshattering on impact to §8§oblind nearby foes§7.\n§7Instantly shift into §8§oSuchende Gestalt§7, cloaked in silent pursuit.§r"
+          ]
+        }
+      }
+    ]
+  },
+  "cooldown": 180,
+  "hud_render": {
+        "should_render": true,
+        "bar_index": 0,
+        "sprite_location": "coraa:textures/gui/coraa_cooldown_bars.png"
+  },
+  "condition": {
+    "type": "origins:and",
+    "conditions": [
+      {
+        "type": "origins:resource",
+        "resource": "coraa:seeker_bar",
+        "comparison": "==",
+        "compare_to": 0
+      },
+      {
+        "type": "origins:resource",
+        "resource": "coraa:resentment_bar",
+        "comparison": ">=",
+        "compare_to": 30
+      }
+    ]
+  },
+  "name": "§5§l✦ Schattenwurf ✦§r",
+  "description": "§5§oUncork your hate — let them choke on it.§r\n§bConsume 30% resentment§7 and hurl a fragile vial of malice, shattering on impact to §8§oblind nearby foes§7.\n§7Instantly shift into §5Suchende Gestalt§r.§r"
 }

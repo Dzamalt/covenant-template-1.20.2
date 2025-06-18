@@ -1,104 +1,347 @@
 {
-   "type": "origins:active_self",
+  "type": "origins:active_self",
   "entity_action": {
     "type": "origins:and",
     "actions": [
       {
-        "type": "origins:play_sound",
-        "category": "players",
-        "sound": "minecraft:entity.splash_potion.break",
-        "volume": 4.5
+        "type": "origins:execute_command",
+        "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^ run function coraa:schattenschnitt_frame1"
       },
       {
         "type": "origins:execute_command",
-        "command": "summon armor_stand ^ ^0.5 ^1.5 {NoGravity:1b,Invisible:1b,Invulnerable:1b,Tags:[\"schattenslash\"]}"
+        "command": "power grant @s coraa:startlag_faster"
       },
       {
-        "type": "origins:change_resource",
-        "resource": "coraa:coraa_antidmg",
-        "change": 1,
-        "operation": "set"
+        "type": "origins:execute_command",
+        "command": "power revoke @s coraa:lastern_seekerpow_lastern_speed"
       },
       {
         "type": "origins:delay",
-        "ticks": 1,
+        "ticks": 2,
         "action": {
           "type": "origins:and",
           "actions": [
             {
-              "type": "origins:area_of_effect",
-              "radius": 3,
-              "bientity_action": {
-                "type": "origins:target_action",
-                "action": {
-                  "type": "origins:and",
-                  "actions": [
-                    {
-                      "type": "origins:area_of_effect",
-                      "radius": 1,
-                      "bientity_action": {
-                        "type": "origins:target_action",
-                        "action": {
-                          "type": "origins:and",
-                          "actions": [
-                            {
-                              "type": "origins:damage",
-                              "amount": 9,
-                              "damage_type": "coraa:schattenslash"
-                            },
-                            {
-                              "type": "origins:apply_effect",
-                              "effect": {
-                                "effect": "minecraft:slowness",
-                                "duration": 70,
-                                "amplifier": 2
-                              }
-                            }
-                          ]
-                        }
-                      },
-                      "bientity_condition": {
-                        "type": "origins:target_condition",
-                        "condition": {
-                          "type": "origins:resource",
-                          "resource": "coraa:coraa_antidmg",
-                          "comparison": "==",
-                          "compare_to": 0
-                        }
-                      }
-                    },
-                    {
-                      "type": "origins:execute_command",
-                      "command": "kill @s"
-                    }
-                  ]
-                }
-              },
-              "bientity_condition": {
-                "type": "origins:target_condition",
-                "condition": {
-                  "type": "origins:nbt",
-                  "nbt": "{Tags: [\"schattenslash\"]}"
-                }
-              }
+              "type": "origins:execute_command",
+              "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^0.3 run function coraa:schattenschnitt_frame2"
             },
             {
-              "type": "origins:change_resource",
-              "resource": "coraa:coraa_antidmg",
-              "change": 0,
-              "operation": "set"
+              "type": "origins:play_sound",
+              "category": "players",
+              "sound": "coraa:schattenschnitt_basic",
+              "volume": 8
+            },
+            {
+              "type": "origins:execute_command",
+              "command": "tag @s add schattenschnitt_hit"
+            },
+            {
+              "type": "origins:delay",
+              "ticks": 2,
+              "action": {
+                "type": "origins:and",
+                "actions": [
+                  {
+                    "type": "origins:execute_command",
+                    "command": "summon armor_stand ^ ^0.5 ^1.5 {NoGravity:1b,Invisible:1b,Invulnerable:1b,Tags:[\"schattenslash\"]}"
+                  },
+                  {
+                    "type": "origins:execute_command",
+                    "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame3"
+                  },
+                  {
+                    "type": "origins:change_resource",
+                    "resource": "coraa:coraa_antidmg",
+                    "change": 1,
+                    "operation": "set"
+                  },
+                  {
+                    "type": "origins:delay",
+                    "ticks": 1,
+                    "action": {
+                      "type": "origins:and",
+                      "actions": [
+                        {
+                          "type": "origins:area_of_effect",
+                          "radius": 3,
+                          "bientity_action": {
+                            "type": "origins:target_action",
+                            "action": {
+                              "type": "origins:and",
+                              "actions": [
+                                {
+                                  "type": "origins:area_of_effect",
+                                  "radius": 2,
+                                  "bientity_action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                      {
+                                        "type": "origins:target_action",
+                                        "action": {
+                                          "type": "origins:and",
+                                          "actions": [
+                                            {
+                                              "type": "origins:damage",
+                                              "amount": 9,
+                                              "damage_type": "coraa:schattenslash"
+                                            },
+                                            {
+                                              "type": "origins:apply_effect",
+                                              "effect": {
+                                                "effect": "minecraft:slowness",
+                                                "duration": 70,
+                                                "amplifier": 2
+                                              }
+                                            },
+                                            {
+                                              "type": "origins:execute_command",
+                                              "command": "tag @p[distance=..6] remove schattenschnitt_hit"
+                                            } ,
+                                            {
+                                              "type": "origins:execute_command",
+                                              "command": "execute as @s at @s positioned ~ ~1 ~ run function coraa:schattenschnitt_spark"
+                                            },
+                                            {
+                                              "type": "origins:execute_command",
+                                              "command": "tag @s add coraa_knockback_me"
+                                            } 
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "type": "origins:add_to_set",
+                                        "set": "coraa:knockback_set"
+                                      }
+                                      ]
+                                  },
+                                  "bientity_condition": {
+                                    "type": "origins:target_condition",
+                                    "condition": {
+                                      "type": "origins:resource",
+                                      "resource": "coraa:coraa_antidmg",
+                                      "comparison": "==",
+                                      "compare_to": 0
+                                    }
+                                  }
+                                },
+                                {
+                                  "type": "origins:execute_command",
+                                  "command": "kill @s"
+                                }
+                              ]
+                            }
+                          },
+                          "bientity_condition": {
+                            "type": "origins:target_condition",
+                            "condition": {
+                              "type": "origins:nbt",
+                              "nbt": "{Tags: [\"schattenslash\"]}"
+                            }
+                          }
+                        },
+                        {
+                            "type": "origins:area_of_effect",
+                            "radius": 7,
+                            "bientity_action": {
+                              "type": "origins:and",
+                              "actions": [
+                                {
+                                  "type": "apoli:add_velocity",
+                                  "z": 1
+                                  
+                                },
+                                {
+                                  "type": "origins:target_action",
+                                  "action": {
+                                    "type": "origins:add_velocity",
+                                    "y": 0.5
+                                  }
+                                },
+                                {
+                                  "type": "origins:target_action",
+                                  "action": {
+                                    "type": "origins:execute_command",
+                                    "command": "tag @s remove coraa_knockback_me"
+                                  }
+                                }
+                              ]
+                            },
+                            "bientity_condition": {
+                              "type": "origins:target_condition",
+                              "condition": {
+                                "type": "origins:nbt",
+                                "nbt": "{Tags: [\"coraa_knockback_me\"]}"
+                            }
+                          }
+                        },
+                        {
+                          "type": "origins:delay",
+                          "ticks": 1,
+                          "action": {
+                            "type": "origins:if_else",
+                            "condition": {
+                              "type": "origins:nbt",
+                              "nbt": "{Tags: [\"schattenschnitt_hit\"]}",
+                              "inverted": true
+                            },
+                            "if_action": {
+                              "type": "origins:delay",
+                              "ticks": 1,
+                              "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                  {
+                                    "type": "origins:execute_command",
+                                    "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame3"
+                                  },
+                                  {
+                                    "type": "origins:play_sound",
+                                    "category": "players",
+                                    "sound": "coraa:schattenschnitt_hit",
+                                    "volume": 5
+                                  },
+                                  {
+                                    "type": "apoli:delay",
+                                    "ticks": 2,
+                                    "action": {
+                                      "type": "origins:and",
+                                      "actions": [
+                                        {
+                                          "type": "origins:execute_command",
+                                          "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame4"
+                                        },
+                                        {
+                                          "type": "origins:delay",
+                                          "ticks": 2,
+                                          "action": {
+                                            "type": "origins:and",
+                                            "actions": [
+                                              {
+                                                "type": "origins:execute_command",
+                                                "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame5"
+                                              },
+                                              {
+                                                "type": "origins:delay",
+                                                "ticks": 2,
+                                                "action": {
+                                                  "type": "origins:and",
+                                                  "actions": [
+                                                    {
+                                                      "type": "origins:execute_command",
+                                                      "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^0.3 run function coraa:schattenschnitt_frame6"
+                                                    },
+                                                    {
+                                                      "type": "origins:delay",
+                                                      "ticks": 2,
+                                                      "action": {
+                                                        "type": "origins:and",
+                                                        "actions": [
+                                                          {
+                                                            "type": "origins:execute_command",
+                                                            "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^0.3 run function coraa:schattenschnitt_frame7"
+                                                          },
+                                                          {
+                                                            "type": "origins:execute_command",
+                                                            "command": "power revoke @s coraa:startlag_faster"
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            },
+                            "else_action": {
+                              "type": "origins:delay",
+                              "ticks": 1,
+                              "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                  {
+                                    "type": "origins:execute_command",
+                                    "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame4"
+                                  },
+                                  {
+                                    "type": "origins:execute_command",
+                                    "command": "tag @s remove schattenschnitt_hit"
+                                  },
+                                  {
+                                    "type": "origins:delay",
+                                    "ticks": 2,
+                                    "action": {
+                                      "type": "origins:and",
+                                      "actions": [
+                                        {
+                                          "type": "origins:execute_command",
+                                          "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame5"
+                                        },
+                                        {
+                                          "type": "origins:delay",
+                                          "ticks": 2,
+                                          "action": {
+                                            "type": "origins:and",
+                                            "actions": [
+                                              {
+                                                "type": "origins:execute_command",
+                                                "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^0.3 run function coraa:schattenschnitt_frame6"
+                                              },
+                                              {
+                                                "type": "origins:delay",
+                                                "ticks": 2,
+                                                "action": {
+                                                  "type": "origins:and",
+                                                  "actions": [
+                                                    {
+                                                      "type": "origins:execute_command",
+                                                      "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^0.3 run function coraa:schattenschnitt_frame7"
+                                                    },
+                                                    {
+                                                      "type": "origins:execute_command",
+                                                      "command": "power revoke @s coraa:startlag_faster"
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                ]
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "type": "origins:change_resource",
+                          "resource": "coraa:coraa_antidmg",
+                          "change": 0,
+                          "operation": "set"
+                        },
+                        {
+                          "type": "origins:change_resource",
+                          "resource": "coraa:seeker_bar",
+                          "change": 0,
+                          "operation": "set"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
             }
-
           ]
         }
-      },
-      {
-        "type": "origins:change_resource",
-        "resource": "coraa:seeker_bar",
-        "change": 0,
-        "operation": "set"
       }
-
     ]
   },
   "cooldown": 20

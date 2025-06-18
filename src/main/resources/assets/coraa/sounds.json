@@ -1,0 +1,86 @@
+{
+    "lastern_laugh":{
+        "subtitle": "Lastern laughs",
+        "sounds": [
+            "coraa:lastern_laugh"
+        ]
+    },
+"lastern_schattenwurf":{
+            "subtitle": "Lastern conceals",
+        "sounds": [
+            "coraa:lastern_schattenwurf"
+        ]
+    },
+        "lastern_gestalt_breath":{
+        "subtitle": "A shadow breathing",
+        "sounds": [
+            "coraa:gestalt_breath"
+        ]
+    },
+"resentment_hard_gain":{
+            "subtitle": "Resentment obtained",
+        "sounds": [
+            "coraa:resentment_hard_gain"
+        ]
+    },
+        "stunned":{
+        "subtitle": "Heavy stun",
+        "sounds": [
+            "coraa:stunned"
+        ]
+    },
+    "schattenschnitt":{
+            "subtitle": "Schattenschnitt attack",
+        "sounds": [
+            "coraa:schattenschnitt"
+        ]
+    },
+        "schattenschnitt_basic":{
+            "subtitle": "Schattenschnitt attack",
+        "sounds": [
+            "coraa:schattenschnitt_basic"
+        ]
+    },
+        "schattenschnitt_hit":{
+        "subtitle": "Schattenschnitt hit",
+        "sounds": [
+            "coraa:schattenschnitt_hit"
+        ]
+    },
+            "eclat_click":{
+        "subtitle": "Eclat clicks",
+        "sounds": [
+            "coraa:eclat_click"
+        ]
+    },
+    "eclat_confirm":{
+            "subtitle": "Eclat hits",
+        "sounds": [
+            "coraa:eclat_confirm_hit"
+        ]
+    },
+        "eclat_reload":{
+            "subtitle": "Eclat reloads",
+        "sounds": [
+            "coraa:eclat_reload"
+        ]
+    },
+        "solenne_eclat_basic":{
+        "subtitle": "Holy bullet pierces",
+        "sounds": [
+            "coraa:solenne_eclat_basic"
+        ]
+    },
+            "resolvement_gain":{
+            "subtitle": "Resolvement obtained",
+        "sounds": [
+            "coraa:resolvement_gain"
+        ]
+    },
+        "solaris_eye_marking":{
+        "subtitle": "Solaris branded",
+        "sounds": [
+            "coraa:solaris_eye_marking"
+        ]
+    }
+}

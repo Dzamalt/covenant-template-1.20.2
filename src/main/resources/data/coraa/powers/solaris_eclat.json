@@ -1,184 +1,224 @@
 {
-    "type": "origins:active_self",
-    "entity_action": {
-        "type": "origins:and",
-        "actions": [
+  "type": "origins:active_self",
+  "entity_action": {
+    "type": "origins:and",
+    "actions": [
+      {
+        "type": "origins:execute_command",
+        "command": "power grant @s coraa:startlag_slower"
+      },
+      {
+        "type": "origins:delay",
+        "ticks": 10,
+        "action": {
+          "type": "origins:and",
+          "actions": [
             {
-                "type": "origins:play_sound",
-                "category": "players",
-                "sound": "minecraft:entity.player.attack.nodamage",
-                "volume": 3.5   
+        "type": "origins:play_sound",
+        "category": "players",
+        "sound": "coraa:solenne_eclat_basic",
+        "volume": 21
             },
             {
-                "type": "origins:raycast",
-                "distance": 20,
-                "block": true,
-                "entity": true,
-                "shape_type": "visual",
-                "fluid_handling": "any",
-                "block_action": {
-                    "type": "origins:and",
-                    "actions": [
-                        {
-                            "type": "origins:add_block",
-                            "block": "minecraft:magma_block"
-                        },
-                        {
-                            "type": "origins:offset",
-                            "action": {
-                                "type": "origins:add_block",
-                                "block": "minecraft:fire"
-                            },
-                            "y": 1
-                        }
-                    ]
-                },
-                "bientity_action": {
-                    "type":"origins:and",
-                    "actions":[
-                        {
-                                            "type": "origins:if_else",
+        "type": "origins:raycast",
+        "distance": 25,
+        "block": true,
+        "entity": true,
+        "shape_type": "visual",
+        "fluid_handling": "any",
+        "bientity_action": {
+          "type": "origins:and",
+          "actions": [
+            {
+              "type": "origins:if_else",
+              "condition": {
+                "type": "origins:target_condition",
                 "condition": {
-                    "type": "origins:target_condition",
-                    "condition": {
-                        "type": "origins:and",
-                        "conditions": [
-                            {
-                                "type": "origins:living"
-                            },
-                            {
-                                "type": "origins:power",
-                                "power": "coraa:solaris_eye_mark"
-                            }
-                        ]
+                  "type": "origins:and",
+                  "conditions": [
+                    {
+                      "type": "origins:living"
+                    },
+                    {
+                      "type": "origins:power",
+                      "power": "coraa:solaris_eye_mark"
                     }
-                
+                  ]
+                }
+              },
+              "if_action": {
+                "type": "origins:and",
+                "actions": [
+                  {
+                    "type": "origins:target_action",
+                    "action": {
+                      "type": "origins:execute_command",
+                      "command": "power revoke @s coraa:solaris_eye_mark"
+                    }
+                  },
+                  {
+                    "type": "origins:target_action",
+                    "action": {
+                      "type": "origins:execute_command",
+                    "command": "execute as @s at @s positioned ~ ~2 ~ run particle minecraft:flame ~ ~ ~ 0 0 0 0.1 30 force"
+                    }
+                  },
+                  {
+                    "type": "origins:actor_action",
+                    "action": {
+                      "type": "origins:change_resource",
+                      "resource": "coraa:resolvement_bar",
+                      "change": 1,
+                      "operation": "add"
+                    }
+                  },
+                  {
+                                  "type": "origins:actor_action",
+              "action": {
+                              "type": "origins:delay",
+              "ticks": 2,
+              "action": {
+                "type": "origins:play_sound",
+                "category": "players",
+                "sound": "coraa:resolvement_gain",
+                "volume": 1
+          }
+              }
+                  }
+                ]
+              },
+              "else_action": {
+                              "type": "origins:actor_action",
+              "action": {
+                              "type": "origins:delay",
+              "ticks": 2,
+              "action": {
+                "type": "origins:play_sound",
+                "category": "players",
+                "sound": "coraa:eclat_confirm",
+                "volume": 1
+          }
+              }
+              }
+            },
+            {
+              "type": "origins:if_else",
+              "condition": {
+                "type": "origins:actor_condition",
+                "condition": {
+                  "type": "origins:on_fire"
+                }
+              },
+              "if_action": {
+                "type": "origins:target_action",
+                "action": {
+                  "type": "origins:set_on_fire",
+                  "duration": 5
+                }
+              }
+            },
+            {
+              "type": "origins:target_action",
+              "action": {
+                "type": "origins:and",
+                "actions": [
+                  {
+                    "type": "origins:apply_effect",
+                    "effect": {
+                      "effect": "minecraft:slowness",
+                      "duration": 20,
+                      "amplifier": 4
+                    }
+                  },
+                  {
+                    "type": "origins:if_else",
+                    "condition": {
+                      "type": "origins:entity_type",
+                      "entity_type": "minecraft:player"
                     },
                     "if_action": {
-                        "type": "origins:and",
-                        "actions": [
-                            {
-                                "type": "origins:target_action",
-                                "action": {
-                                    "type": "origins:execute_command",
-                                    "command": "power revoke @s coraa:solaris_eye_mark"
-                                }
-                            },
-                            {
-                                "type": "origins:actor_action",
-                                "action": {
-                                    "type": "origins:change_resource",
-                                    "resource": "coraa:resolvement_bar",
-                                    "change": 1,
-                                    "operation": "add"
-                                }
-                            }
-                        ]
+                      "type": "origins:damage",
+                      "amount": 5,
+                      "damage_type": "coraa:solaris_eclat"
+                    },
+                    "else_action": {
+                      "type": "origins:damage",
+                      "amount": 10,
+                      "damage_type": "coraa:solaris_eclat"
                     }
-                        },
-                        {
-                            "type": "origins:if_else",
-                            "condition": {
-                                "type": "origins:actor_condition",
-                                "condition": {
-                                    "type": "origins:on_fire"
-                                }
-                            },
-                            "if_action": {
-                                "type": "origins:target_action",
-                                "action": {
-                                    "type": "origins:set_on_fire",
-                                    "duration": 3
-                                }
-                            }
-                        },
-                        {
-                            "type": "origins:target_action",
-                    "action": {
-                        "type": "origins:and",
-                        "actions": [
-                            {
-                              "type": "origins:apply_effect",
-                              "effect": {
-                                "effect": "minecraft:slowness",
-                                "duration": 10,
-                                "amplifier": 3
-                              }    
-                            },
-                            {
-                                "type": "origins:if_else",
-                                "condition": {
-                                    "type": "origins:entity_type",
-                                    "entity_type": "minecraft:player"
-                                },
-                                "if_action": {
-                                    "type": "origins:damage",
-                                    "amount": 5,
-                                    "damage_type": "coraa:solaris_eclat"
-                                    },
-                                "else_action": {
-                                    "type": "origins:damage",
-                                    "amount": 10,
-                                    "damage_type": "coraa:solaris_eclat"
-                                }
-                                
-                            }
-                        ]
-                    }
-                        }
-                    ]
-                    
-                },
-                "before_action": {
-                            "type": "origins:change_resource",
-                            "resource": "coraa:resolvement_bar",
-                            "change": -2,
-                            "operation": "add"
-                },
-                "hit_action": {
-                    "type": "origins:execute_command",
-                    "command": "say After (hit)"
-                },
-                "miss_action": {
-                    "type": "origins:execute_command",
-                    "command": "say After (miss)"
-                },
-                "command_at_hit": "particle minecraft:block_marker minecraft:emerald_block ~ ~ ~ 0 0 0 0.0 1 normal @a",
-                "command_along_ray": "particle minecraft:soul_fire_flame",
-                "command_step": 1,
-                "command_along_ray_only_on_hit": true
+                  }
+                ]
+              }
             }
-        ]
-    },
-    "condition": {
-     "type": "origins:and",
-     "conditions": [
-        {
-                "type": "origins:resource",
-                "resource": "coraa:resolvement_bar",
-                "comparison": ">=",
-                "compare_to": 2
+          ]
         },
-        {
-            "type": "origins:on_block",
+        "before_action": {
+          "type": "origins:change_resource",
+          "resource": "coraa:resolvement_bar",
+          "change": -2,
+          "operation": "add"
+        },
+        "command_at_hit": "particle minecraft:flame ~ ~ ~ 0 0 0 0.1 30 force",
+        "command_along_ray": "function coraa:eclat_basic_raycast_particle",
+        "command_step": 0.5,
+        "command_along_ray_only_on_hit": false
+      },
+      {
+                "type": "origins:execute_command",
+        "command": "power revoke @s coraa:startlag_slower"
+      },
+      {
+        "type": "origins:delay",
+        "ticks": 15,
+        "action": {
+            "type": "origins:play_sound",
+            "category": "players",
+            "sound": "coraa:eclat_reload",
+            "volume": 1
+        }
+      }
+          ]
+        }
+      }
+    ]
+  },
+  "condition": {
+    "type": "origins:and",
+    "conditions": [
+      {
+        "type": "origins:resource",
+        "resource": "coraa:resolvement_bar",
+        "comparison": ">=",
+        "compare_to": 2
+      },
+      {
+        "type": "origins:in_block",
         "block_condition": {
-          "type": "origins:offset",
-          "condition": {
             "type": "origins:block",
-            "block": "minecraft:water",
-            "inverted": true
-          },
-          "y": 1
-        }
+            "block": "minecraft:water"
         },
-        {
-            "type": "origins:in_rain",
             "inverted": true
-        }
-     ]
-    },
-    "cooldown": 40,
-    "hud_render": {
-        "should_render": false
+      },
+      {
+        "type": "origins:in_rain",
+        "inverted": true
+      }
+    ]
+  },
+  "cooldown": 30,
+  "hud_render": {
+    "should_render": false
+  },
+  "key": {
+    "key": "key.origins.primary_active"
+  },
+  "name": "§c§l✦ Solaris Eclat ✦§r",
+  "badges": [
+    {
+      "type": "origins:tooltip",
+      "sprite": "coraa:textures/gui/badge/radiance_badge_active.png",
+      "text": "If you are §c§oburning§r, §7enemies hit by Solaris Eclat burn with radiant flame for 5s.§r  "
     }
+  ],
+  "description": "§e§oDraw faster than the setting sun.§r \nConsume §b2 Resolvement point§7 to fire a §6blazing bolt of light§r that pierces any armor and immobilize foes.  "
 }

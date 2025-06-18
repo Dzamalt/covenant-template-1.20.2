@@ -2,11 +2,11 @@
   "type": "origins:multiple",
   "lastern_overlay": {
     "type": "origins:overlay",
-    "texture": "coraa:textures/misc/gestalt_placeholder.png",
-    "strength": 1.0,
-    "red": 1.0,
-    "green": 1.0,
-    "blue": 1.0,
+    "texture": "coraa:textures/misc/overlay/gestalt_overlay.png",
+    "strength": 1,
+    "red": 1,
+    "green": 1,
+    "blue": 1,
     "draw_mode": "texture",
     "draw_phase": "below_hud",
     "hide_with_hud": false,
@@ -18,12 +18,22 @@
       "compare_to": 1
     }
   },
+  "lastern_breathing": {
+    "type": "origins:action_over_time",
+    "interval": 35,
+    "entity_action": {
+      "type": "origins:play_sound",
+      "category": "players",
+      "sound": "coraa:lastern_gestalt_breath",
+      "volume": 5
+    }
+  },
   "lastern_speed": {
     "type": "origins:attribute",
     "modifier": {
       "attribute": "minecraft:generic.movement_speed",
-      "value": 1.05,
-      "operation": "multiply_total"
+      "value": 0.5,
+      "operation": "multiply_base"
     }
   },
   "lastern_stunable": {
@@ -31,6 +41,12 @@
     "entity_action": {
       "type": "origins:and",
       "actions": [
+        {
+          "type": "origins:play_sound",
+          "category": "players",
+          "sound": "coraa:stunned",
+          "volume": 6
+        },
         {
           "type": "origins:apply_effect",
           "effect": {
@@ -48,7 +64,6 @@
           }
         },
         {
-
           "type": "origins:change_resource",
           "resource": "coraa:seeker_bar",
           "change": 0,
@@ -62,7 +77,7 @@
     "type": "origins:modify_damage_taken",
     "modifier": {
       "operation": "multiply_base",
-      "value": 1.5
+      "value": 1
     }
   },
   "lastern_invis": {
@@ -119,6 +134,25 @@
       "operation": "set"
     }
   },
+  "lastern_seeker_block_break": {
+    "type": "origins:action_on_block_break",
+    "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "coraa:seeker_bar",
+      "change": 0,
+      "operation": "set"
+    }
+  },
+  "lastern_item_use": {
+    "type": "origins:action_on_item_use",
+    "trigger": "instant",
+    "entity_action": {
+      "type": "origins:change_resource",
+      "resource": "coraa:seeker_bar",
+      "change": 0,
+      "operation": "set"
+    }
+  },
   "lastern_particle": {
     "type": "origins:particle",
     "particle": "minecraft:portal",
@@ -127,5 +161,4 @@
     "visible_while_invisible": true,
     "visible_in_first_person": true
   }
-
 }

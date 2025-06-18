@@ -1,29 +1,5 @@
 {
     "type": "origins:multiple",
-    "solenne_water_antiregen": {
-        "type": "origins:disable_regen",
-        "condition": {
-            "type": "origins:or",
-            "conditions": [
-                        {
-            "type": "origins:on_block",
-        "block_condition": {
-          "type": "origins:offset",
-          "condition": {
-            "type": "origins:block",
-            "block": "minecraft:water",
-            "inverted": true
-          },
-          "y": 1
-        }
-        },
-        {
-            "type": "origins:in_rain",
-            "inverted": true
-        }
-            ]
-        }
-    },
     "solenne_water_antiheal":{
             "type": "origins:modify_healing",
     "modifier": {
@@ -61,43 +37,20 @@
       "operation": "add"
     },
     "damage_condition": {
-          "type": "origins:in_tag",
+      "type":"origins:or",
+      "conditions":[
+        {
+                    "type": "origins:in_tag",
           "tag": "minecraft:is_drowning"
+        },
+        {
+                    "type": "origins:in_tag",
+          "tag": "minecraft:is_freezing"
+        }
+      ]
+
     },
     "cooldown": 50
-    },
-    "solenne_resolve_dark":{
-                  "type": "origins:action_when_damage_taken",
-    "entity_action": {
-      "type": "origins:change_resource",
-      "resource": "coraa:resolvement_bar",
-      "change": -1,
-      "operation": "add"
-    },
-    "condition": {
-          "type": "origins:brightness",
-          "comparison": "<=",
-          "compare_to": 0.06
-    },
-    "cooldown": 100  
-    },
-    "solenne_blindness":{
-            "type": "origins:stacking_status_effect",
-    "min_stacks": -3,
-    "max_stacks": 1,
-    "duration_per_stack": 60,
-    "tick_rate": 20,
-    "effect": {
-        "effect": "minecraft:blindness",
-        "is_ambient": true,
-        "show_particles": false,
-        "show_icon": false
-    },
-    "condition": {
-          "type": "origins:brightness",
-          "comparison": "<=",
-          "compare_to": 0.06
-    }
     },
     "solenne_meleevuln":{
             "type": "origins:modify_damage_taken",
@@ -120,7 +73,7 @@
         },
         "modifier":{
             "operation":"multiply_base",
-            "value": 0.8
+            "value": 0.80
         }
     },
     "solenne_range_boost":{
@@ -139,7 +92,33 @@
                 "duration": 60
             }
         },
+        "condition": {
+          "type": "origins:and",
+          "conditions": [
+            {
+        "type": "origins:in_block",
+        "block_condition": {
+            "type": "origins:block",
+            "block": "minecraft:water"
+        },
+            "inverted": true
+      },
+      {
+        "type": "origins:in_rain",
+        "inverted": true
+      }
+          ]
+        },
         "cooldown": 20
+    },
+    "eclat_click":{
+      "type": "origins:active_self",
+      "entity_action": {
+                "type": "origins:play_sound",
+        "category": "players",
+        "sound": "coraa:eclat_click",
+        "volume": 1
+      }
     },
   "callback_team":{
     "type": "origins:action_on_callback",
@@ -161,5 +140,19 @@
         "command": "team leave @s"
     },
     "execute_chosen_when_orb": true
-  }
+  },
+  "name":"§4§l✦Radiant Fragility✦§r",
+          "badges": [
+    {
+        "type": "origins:tooltip",
+        "sprite": "coraa:textures/gui/badge/radiance_badge_flaws.png",
+        "text": "§oWhile wet, you lose access to §cSolaris Eclat, §6Solaris eye, Swift Judgement,§r §cand healing is stifled.§r  §8Drowning and freezing drains your Resolvement.§r "
+    },
+        {
+        "type": "origins:tooltip",
+        "sprite": "coraa:textures/gui/badge/radiance_badge_flaws.png",
+        "text": "§6You take more damage when enemies are near§r, §7and your attacks lose power at close range.§r"
+    }
+],
+  "description":"§c§oHoly fire fears closeness.§r §9Rain and water silence your fire."
 }

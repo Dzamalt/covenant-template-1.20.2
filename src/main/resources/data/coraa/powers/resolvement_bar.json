@@ -5,10 +5,10 @@
     "start_value": 3,
     "hud_render": {
         "should_render": true,
-        "sprite_location": "origins:textures/gui/community/huang/resource_bar_01.png",
-        "bar_index": 14
+        "sprite_location": "coraa:textures/gui/resolvement_bar.png",
+        "bar_index": 0
     },
-    "name": "§b§l✦ Resolvement ✦§r",
+    "name": "§e§l✦ Resolvement ✦§r",
     "badges": [
     {
         "type": "origins:tooltip",

@@ -13,8 +13,12 @@
         "command": "power grant @s coraa:lastern_seekerpow"
       },
       {
-        "type": "origins:execute_command",
+        "type":"origins:delay",
+        "ticks": 15,
+        "action": {
+                  "type": "origins:execute_command",
         "command": "power grant @s coraa:schattenslash_default"
+        }
       }
       ]
   },
@@ -26,8 +30,12 @@
         "command": "power revoke @s coraa:lastern_seekerpow"
       },
       {
-        "type": "origins:execute_command",
+        "type":"origins:delay",
+        "ticks": 16,
+        "action": {
+                  "type": "origins:execute_command",
         "command": "power revoke @s coraa:schattenslash_default"
+        }
       }
     ]
   },
@@ -35,15 +43,15 @@
   "badges": [
     {
       "type": "origins:tooltip",
-      "sprite": "origins:textures/gui/community/silent/badge/icons/sky/moon_full.png",
-      "text": "Schattenschnitt: §8§oCut the silence — §4 bleed them into stillness.§r  \n§7A sweeping slash of gloom that §9slows§7 and wounds foes for §c9 damage§7.  \n§7Exits §oSuchende Gestalt§7 upon use.§r"
+      "sprite": "coraa:textures/gui/badge/abyss_badge_active.png",
+      "text": "§5§l✦ Schattenschnitt ✦§r: §8§oCut the silence — §4 bleed them into stillness.§r  \n§7A sweeping slash of gloom that §9slows§7 and wounds foes for §c9 damage§7.  \n§7Exits §oSuchende Gestalt§7 upon use.§r"
     }
   ],
   "description": [
-  "§8§oSlip between veils — unseen, untouchable, yet fragile.§r\n§7Become truly invisible and swift, draining §5Resentment§7 over time.\n§7§oAny attack, action, or blow breaks the illusion§7 — getting hit §c§ostuns§7 you briefly. §7While hidden, press §o(",
+  "§5§oSlip between veils — unseen swiftness, yet fragile.§r\n§7Become truly invisible and swift, draining §5Resentment§7 over time.\n§7§oAny attack, action, or blow breaks the illusion§7 — getting hit §c§ostuns§7 you briefly. §7While hidden, press §o(",
     {
       "keybind": "key.origins.primary_active"
     },
-    ")§r§7 to unleash a §8Schattenschnitt§7 that slows and strikes with shadow.§r"
+    ")§r§7 to unleash §5Schattenschnitt§r§7 that slows and strikes with shadow.§r"
     ]
 }

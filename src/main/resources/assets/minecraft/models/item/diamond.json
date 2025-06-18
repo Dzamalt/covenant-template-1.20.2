@@ -1,0 +1,21 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "minecraft:item/diamond"
+    },
+    "overrides": [
+      {
+        "predicate": {
+          "custom_model_data": 696801
+        },
+        "model": "minecraft:item/lastern_logo"
+      },
+            {
+        "predicate": {
+          "custom_model_data": 696802
+        },
+        "model": "minecraft:item/solenne_logo"
+      }
+    ]
+  }
+  

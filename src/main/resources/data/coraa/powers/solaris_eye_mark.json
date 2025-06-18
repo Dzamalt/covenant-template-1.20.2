@@ -1,18 +1,32 @@
 {
-    "type": "origins:action_over_time",
-    "interval": 10,
+    "type": "origins:multiple",
+    "mark_effects":{
+            "type": "origins:action_over_time",
+    "interval": 5,
     "entity_action": {
-        "type": "origins:spawn_particles",
-        "particle": {
-            "type": "minecraft:flame"
+        "type": "origins:execute_command",
+        "command": "execute as @s at @s positioned ~ ~3 ~ facing entity @p eyes run function coraa:solaris_eye"
+    }
+    },
+    "mark_duration": {
+            "type": "origins:cooldown",
+    "cooldown": 180,
+    "hud_render": {
+        "should_render": false
+    }
+    },
+    "mark_trigger":{
+        "type": "origins:action_over_time",
+        "interval": 180,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "coraa:solaris_eye_mark_mark_duration",
+            "comparison": "==",
+            "compare_to": 0
         },
-        "count": 10,
-        "speed": 0.0,
-        "force": true,
-        "spread": {
-            "x": 2.0,
-            "y": 0.0,
-            "z": 2.0
+        "entity_action": {
+                  "type": "origins:execute_command",
+        "command": "power revoke @s coraa:solaris_eye_mark"
         }
     }
 }

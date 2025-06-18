@@ -31,22 +31,41 @@
           "comparison": "<",
           "compare_to": 100
         }
-        ]
+      ]
     }
+  },
+  "night_vision_ahh": {
+    "type": "origins:night_vision",
+    "strength": 0.75
   },
   "darkness_gain": {
     "type": "origins:action_over_time",
     "entity_action": {
-      "type": "origins:change_resource",
-      "resource": "coraa:resentment_bar",
-      "change": 2,
-      "operation": "add"
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:chance",
+          "chance": 0.025,
+          "action": {
+            "type": "origins:play_sound",
+            "category": "players",
+            "sound": "minecraft:ambient.cave",
+            "volume": 1
+          }
+        },
+        {
+          "type": "origins:change_resource",
+          "resource": "coraa:resentment_bar",
+          "change": 2,
+          "operation": "add"
+        }
+      ]
     },
     "interval": 20,
     "condition": {
-          "type": "origins:brightness",
-          "comparison": "<=",
-          "compare_to": 0.2
+      "type": "origins:brightness",
+      "comparison": "<=",
+      "compare_to": 0.2
     }
   },
   "firedecrease": {
@@ -58,12 +77,12 @@
       "operation": "add"
     },
     "damage_condition": {
-          "type": "origins:in_tag",
-          "tag": "minecraft:is_fire"
+      "type": "origins:in_tag",
+      "tag": "minecraft:is_fire"
     },
     "cooldown": 1
   },
-  "lava_helpless":{
+  "lava_helpless": {
     "type": "origins:action_over_time",
     "entity_action": {
       "type": "origins:if_else",
@@ -89,86 +108,96 @@
     },
     "interval": 20
   },
-
   "blind_immunity": {
     "type": "origins:effect_immunity",
     "effect": "minecraft:blindness"
   },
-  "wither_buff": {
-    "type": "origins:action_over_time",
-    "entity_action": {
-      "type": "origins:change_resource",
-      "resource": "coraa:resentment_bar",
-      "change": 3,
-      "operation": "add"
+  "dash_regen": {
+    "type": "origins:action_on_hit",
+    "bientity_action": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:target_action",
+          "action": {
+            "type": "origins:execute_command",
+            "command": "execute as @s at @s positioned ~ ~1.5 ~ run function coraa:small_lastern_spark"
+          }
+        },
+        {
+          "type": "origins:actor_action",
+          "action": {
+            "type": "origins:play_sound",
+            "category": "players",
+            "sound": "coraa:resentment_hard_gain",
+            "volume": 1
+          }
+        },
+        {
+          "type": "origins:actor_action",
+          "action": {
+            "type": "origins:change_resource",
+            "resource": "coraa:resentment_bar",
+            "change": 8,
+            "operation": "add"
+          }
+        }
+      ]
     },
-    "interval": 20,
-    "condition": {
-      "type": "origins:status_effect",
-      "effect": "minecraft:wither",
-      "min_amplifier": -1
-    }
-  },
-  "wither_speed":{
-        "type": "origins:conditioned_attribute",
-    "modifier": {
-        "attribute": "minecraft:generic.movement_speed",
-        "operation": "addition",
-        "value": 0.03
+    "bientity_condition": {
+      "type": "origins:actor_condition",
+      "condition": {
+        "type": "origins:sprinting"
+      }
     },
-    "tick_rate": 20,
-    "condition": {
-      "type": "origins:status_effect",
-      "effect": "minecraft:wither",
-      "min_amplifier": -1
-    }
+    "cooldown": 30
   },
-  "callback_team":{
+  "callback_team": {
     "type": "origins:action_on_callback",
     "entity_action_gained": {
       "type": "origins:and",
       "actions": [
         {
-        "type": "origins:execute_command",
-        "command": "team add shadowblade"
+          "type": "origins:execute_command",
+          "command": "team add shadowblade"
         },
         {
-        "type": "origins:execute_command",
-        "command": "team join shadowblade @s"
+          "type": "origins:execute_command",
+          "command": "team join shadowblade @s"
         }
       ]
     },
     "entity_action_lost": {
-      "type":"origins:and",
-      "actitons": [
-              {
-        "type": "origins:execute_command",
-        "command": "power revoke @s coraa:lastern_seekerpow"
-      },
-      {
-        "type": "origins:execute_command",
-        "command": "power revoke @s coraa:schattenslash_default"
-      },
-      {
-                "type": "origins:execute_command",
-        "command": "team leave @s"
-      }
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:execute_command",
+          "command": "power revoke @s coraa:lastern_seekerpow"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "power revoke @s coraa:schattenslash_default"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "team leave @s"
+        }
       ]
     },
     "execute_chosen_when_orb": true
   },
-  "name": "§5§l✦ Emberbane Skin ✦§r",
+  "name": "§5§l✦ Light's Bane ✦§r",
   "badges": [
     {
-    "type": "origins:tooltip",
-    "sprite": "origins:textures/gui/community/silent/badge/icons/sky/moon_full.png",
-    "text": "§7At high light levels or direct sunlight, you §8lose Resentment§7 unless perfectly full (100).§r"
+      "type": "origins:tooltip",
+      "sprite": "coraa:textures/gui/badge/abyss_badge_flaws.png",
+      "text": "§7At high light levels or direct sunlight, you §8lose Resentment§7 unless perfectly full (100).§r"
     },
     {
       "type": "origins:tooltip",
-      "sprite": "origins:textures/gui/community/silent/badge/icons/sky/moon_full.png",
+      "sprite": "coraa:textures/gui/badge/abyss_badge_flaws.png",
       "text": "§7Each tick of fire damage burns §c10§7 §5Resentment§7.  \n§7In §clava§7, you are §ohelpless§7 — unable to move.§r"
     }
-    ],
-  "description": "§e§oThe light despises what it cannot see.§r and §c§oThe fire eats at your essence.§r  "
+  ],
+  "description": "§e§oThe light despises what it cannot see.§7 and §c§oThe fire eats at your essence.§r  "
 }
