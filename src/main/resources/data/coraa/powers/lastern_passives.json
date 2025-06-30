@@ -56,7 +56,7 @@
         {
           "type": "origins:change_resource",
           "resource": "coraa:resentment_bar",
-          "change": 2,
+          "change": 1,
           "operation": "add"
         }
       ]
@@ -87,14 +87,10 @@
     "entity_action": {
       "type": "origins:if_else",
       "condition": {
-        "type": "origins:on_block",
+        "type": "origins:in_block",
         "block_condition": {
-          "type": "origins:offset",
-          "condition": {
-            "type": "origins:block",
-            "block": "minecraft:lava"
-          },
-          "y": 1
+          "type": "origins:block",
+          "block": "minecraft:lava"
         }
       },
       "if_action": {
@@ -136,10 +132,24 @@
         {
           "type": "origins:actor_action",
           "action": {
-            "type": "origins:change_resource",
-            "resource": "coraa:resentment_bar",
-            "change": 8,
-            "operation": "add"
+            "type": "origins:if_else",
+            "condition": {
+              "type": "origins:origin",
+              "layer": "origins:coin_of_covenant",
+              "origin": "coraa:lastern_shade_coin"
+            },
+            "if_action": {
+              "type": "origins:change_resource",
+              "resource": "coraa:resentment_bar",
+              "change": 7,
+              "operation": "add"
+            },
+            "else_action": {
+              "type": "origins:change_resource",
+              "resource": "coraa:resentment_bar",
+              "change": 9,
+              "operation": "add"
+            }
           }
         }
       ]
@@ -164,6 +174,10 @@
         {
           "type": "origins:execute_command",
           "command": "team join shadowblade @s"
+        },
+        {
+          "type": "origins:execute_command",
+          "command": "team modify shadowblade color dark_purple"
         }
       ]
     },
@@ -180,6 +194,10 @@
         },
         {
           "type": "origins:execute_command",
+          "command": "power revoke @s coraa:lastern_coin_short_immune"
+        },
+        {
+          "type": "origins:execute_command",
           "command": "team leave @s"
         }
       ]
@@ -191,12 +209,12 @@
     {
       "type": "origins:tooltip",
       "sprite": "coraa:textures/gui/badge/abyss_badge_flaws.png",
-      "text": "§7At high light levels or direct sunlight, you §8lose Resentment§7 unless perfectly full (100).§r"
+      "text": "§7At high light levels or direct sunlight, you §8lose §1Resentment§7 unless perfectly full (100).§r"
     },
     {
       "type": "origins:tooltip",
       "sprite": "coraa:textures/gui/badge/abyss_badge_flaws.png",
-      "text": "§7Each tick of fire damage burns §c10§7 §5Resentment§7.  \n§7In §clava§7, you are §ohelpless§7 — unable to move.§r"
+      "text": "§7Each tick of fire damage burns §c10§7 §1Resentment§7.  \n§7In §clava§7, you are §ohelpless§7 — unable to move.§r"
     }
   ],
   "description": "§e§oThe light despises what it cannot see.§7 and §c§oThe fire eats at your essence.§r  "

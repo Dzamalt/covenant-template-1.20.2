@@ -10,6 +10,10 @@
         "volume": 4.5
       },
       {
+                            "type": "origins:execute_command",
+                    "command": "power grant @s coraa:vignette"
+      },
+      {
         "type": "origins:play_sound",
         "category": "players",
         "sound": "coraa:lastern_schattenwurf",
@@ -45,6 +49,24 @@
           "type": "origins:and",
           "actions": [
             {
+              "name":"Lastern shade coin dash",
+              "type": "origins:if_else",
+              "condition": {
+                "type": "origins:origin",
+                "layer": "origins:coin_of_covenant",
+                "origin": "coraa:lastern_shade_coin"
+              },
+              "if_action": {
+                "type": "origins:add_velocity",
+                "space": "local",
+                "z": 1.5
+              }
+            },
+            {
+                                  "type": "origins:execute_command",
+                    "command": "power revoke @s coraa:vignette"
+            },
+            {
               "type": "origins:chance",
               "chance": 0.2,
               "action": {
@@ -63,7 +85,7 @@
             {
               "type": "origins:change_resource",
               "resource": "coraa:resentment_bar",
-              "change": -30,
+              "change": -25,
               "operation": "add"
             },
             {
@@ -147,10 +169,10 @@
         "type": "origins:resource",
         "resource": "coraa:resentment_bar",
         "comparison": ">=",
-        "compare_to": 30
+        "compare_to": 25
       }
     ]
   },
-  "name": "§5§l✦ Schattenwurf ✦§r",
-  "description": "§5§oUncork your hate — let them choke on it.§r\n§bConsume 30% resentment§7 and hurl a fragile vial of malice, shattering on impact to §8§oblind nearby foes§7.\n§7Instantly shift into §5Suchende Gestalt§r.§r"
+  "name": "§d§l✦ Schattenwurf ✦§r",
+  "description": "§d§oUncork your hate — let them choke on it.§r\n§bConsume 25% §1Resentment§7 and hurl a fragile vial of malice, shattering on impact to §8§oblind nearby foes§7.\n§7Instantly shift into §d§oSuchende Gestalt§r.§r"
 }

@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:item/generated",
+    "textures": {
+      "layer0": "coraa:item/coin_of_covenant"
+    }
+  }
+  

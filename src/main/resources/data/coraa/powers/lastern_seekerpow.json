@@ -29,11 +29,17 @@
     }
   },
   "lastern_speed": {
-    "type": "origins:attribute",
+    "type": "origins:conditioned_attribute",
     "modifier": {
       "attribute": "minecraft:generic.movement_speed",
       "value": 0.5,
       "operation": "multiply_base"
+    },
+    "condition": {
+      "type": "origins:origin",
+      "layer": "origins:coin_of_covenant",
+      "origin": "coraa:lastern_sightless_coin",
+      "inverted": true
     }
   },
   "lastern_stunable": {
@@ -42,25 +48,39 @@
       "type": "origins:and",
       "actions": [
         {
-          "type": "origins:play_sound",
-          "category": "players",
-          "sound": "coraa:stunned",
-          "volume": 6
-        },
-        {
-          "type": "origins:apply_effect",
-          "effect": {
-            "effect": "minecraft:slowness",
-            "duration": 40,
-            "amplifier": 2
-          }
-        },
-        {
-          "type": "origins:apply_effect",
-          "effect": {
-            "effect": "minecraft:weakness",
-            "duration": 40,
-            "amplifier": 1
+          "type": "origins:if_else",
+          "condition": {
+            "type": "origins:origin",
+            "layer": "origins:coin_of_covenant",
+            "origin": "coraa:lastern_unrestrained_coin",
+            "inverted": true
+          },
+          "if_action": {
+            "type": "origins:and",
+            "actions": [
+              {
+                "type": "origins:play_sound",
+                "category": "players",
+                "sound": "coraa:stunned",
+                "volume": 6
+              },
+              {
+                "type": "origins:apply_effect",
+                "effect": {
+                  "effect": "minecraft:slowness",
+                  "duration": 40,
+                  "amplifier": 2
+                }
+              },
+              {
+                "type": "origins:apply_effect",
+                "effect": {
+                  "effect": "minecraft:weakness",
+                  "duration": 40,
+                  "amplifier": 1
+                }
+              }
+            ]
           }
         },
         {
@@ -78,11 +98,23 @@
     "modifier": {
       "operation": "multiply_base",
       "value": 1
+    },
+    "condition": {
+      "type": "origins:origin",
+      "layer": "origins:coin_of_covenant",
+      "origin": "coraa:lastern_unrestrained_coin",
+      "inverted": true
     }
   },
   "lastern_invis": {
     "type": "origins:invisibility",
-    "render_armor": false
+    "render_armor": false,
+    "condition": {
+      "type": "origins:origin",
+      "layer": "origins:coin_of_covenant",
+      "origin": "coraa:lastern_sightless_coin",
+      "inverted": true
+    }
   },
   "lastern_resent_decrease": {
     "type": "origins:action_over_time",
@@ -132,6 +164,12 @@
       "resource": "coraa:seeker_bar",
       "change": 0,
       "operation": "set"
+    },
+    "condition": {
+      "type": "origins:origin",
+      "layer": "origins:coin_of_covenant",
+      "origin": "coraa:lastern_unrestrained_coin",
+      "inverted": true
     }
   },
   "lastern_seeker_block_break": {
@@ -141,6 +179,12 @@
       "resource": "coraa:seeker_bar",
       "change": 0,
       "operation": "set"
+    },
+    "condition": {
+      "type": "origins:origin",
+      "layer": "origins:coin_of_covenant",
+      "origin": "coraa:lastern_unrestrained_coin",
+      "inverted": true
     }
   },
   "lastern_item_use": {
@@ -151,6 +195,12 @@
       "resource": "coraa:seeker_bar",
       "change": 0,
       "operation": "set"
+    },
+    "condition": {
+      "type": "origins:origin",
+      "layer": "origins:coin_of_covenant",
+      "origin": "coraa:lastern_unrestrained_coin",
+      "inverted": true
     }
   },
   "lastern_particle": {
@@ -160,5 +210,47 @@
     "frequency": 9,
     "visible_while_invisible": true,
     "visible_in_first_person": true
+  },
+  "lastern_coin_speed": {
+    "type": "origins:conditioned_attribute",
+    "modifier": {
+      "attribute": "minecraft:generic.movement_speed",
+      "value": 0.35,
+      "operation": "multiply_base"
+    },
+    "condition": {
+      "type": "origins:origin",
+      "layer": "origins:coin_of_covenant",
+      "origin": "coraa:lastern_sightless_coin"
+    }
+  },
+  "lastern_coin_dmg_invuln": {
+    "type": "origins:invulnerability",
+    "damage_condition": {
+      "type": "origins:and",
+      "conditions": [
+        {
+          "type": "origins:in_tag",
+          "tag": "minecraft:is_fall"
+        },
+        {
+          "type": "origins:type",
+          "damage_type": "minecraft:fly_into_wall"
+        }
+      ]
+    }
+  },
+  "lastern_con_reducedmg": {
+    "type": "origins:modify_damage_taken",
+    "modifier": {
+      "operation": "multiply_base",
+      "value": 0.50
+    },
+    "condition": {
+      "type": "origins:origin",
+      "layer": "origins:coin_of_covenant",
+      "origin": "coraa:lastern_unrestrained_coin",
+      "inverted": true
+    }
   }
 }

@@ -118,36 +118,99 @@
               }
             },
             {
-              "type": "origins:target_action",
+              "type": "origins:if_else",
+              "condition": {
+                "type": "origins:actor_condition",
+                "condition": {
+                                                              "type": "origins:origin",
+                    "layer": "origins:coin_of_covenant",
+                    "origin": "coraa:solenne_blaze_coin",
+                    "inverted": true
+                }
+              },
+              "if_action": {
+                              "type": "origins:target_action",
               "action": {
-                "type": "origins:and",
-                "actions": [
-                  {
-                    "type": "origins:apply_effect",
+                                    "type": "origins:apply_effect",
                     "effect": {
                       "effect": "minecraft:slowness",
                       "duration": 20,
                       "amplifier": 4
                     }
-                  },
-                  {
-                    "type": "origins:if_else",
-                    "condition": {
+              }
+              }
+            },
+            {
+              "type": "origins:if_else",
+              "condition": {
+                "type": "apoli:target_condition",
+                "condition": {
                       "type": "origins:entity_type",
                       "entity_type": "minecraft:player"
+                }
+              },
+              "if_action": {
+                "type": "origins:if_else",
+                "condition": {
+                  "type": "origins:and",
+                  "conditions": [
+                    {
+                      "type": "origins:actor_condition",
+                      "condition": {
+                                            "type": "origins:origin",
+                    "layer": "origins:coin_of_covenant",
+                    "origin": "coraa:solenne_precise_coin"
+                      }
                     },
-                    "if_action": {
-                      "type": "origins:damage",
+                    {
+                      "name":"Solenne precise coin",
+                      "type": "origins:distance",
+                      "comparison": ">=",
+                      "compare_to": 17
+                    }
+                  ]
+                },
+                "if_action": {
+                                      "type": "origins:damage",
+                      "amount": 7,
+                      "damage_type": "coraa:solaris_eclat"
+                },
+                "else_action": {
+                                                        "type": "origins:damage",
                       "amount": 5,
                       "damage_type": "coraa:solaris_eclat"
+                }
+              },
+              "else_action": {
+                "type": "origins:if_else",
+                "condition": {
+                  "type": "origins:and",
+                  "conditions": [
+                    {
+                      "type": "origins:actor_condition",
+                      "condition": {
+                                            "type": "origins:origin",
+                    "layer": "origins:coin_of_covenant",
+                    "origin": "coraa:solenne_precise_coin"
+                      }
                     },
-                    "else_action": {
-                      "type": "origins:damage",
+                    {
+                      "type": "origins:distance",
+                      "comparison": ">=",
+                      "compare_to": 17
+                    }
+                  ]
+                },
+                "if_action": {
+                                      "type": "origins:damage",
+                      "amount": 12,
+                      "damage_type": "coraa:solaris_eclat"
+                },
+                "else_action": {
+                                                        "type": "origins:damage",
                       "amount": 10,
                       "damage_type": "coraa:solaris_eclat"
-                    }
-                  }
-                ]
+                }
               }
             }
           ]
@@ -178,6 +241,31 @@
         }
       }
           ]
+        }
+      },
+      {
+        "type": "origins:if_else",
+        "condition": {
+          "type": "origins:and",
+          "conditions": [
+            {
+              "type": "origins:on_fire",
+              "inverted": true
+            },
+            {
+                                                          "type": "origins:origin",
+                    "layer": "origins:coin_of_covenant",
+                    "origin": "coraa:solenne_blaze_coin"
+            }
+          ]
+        },
+        "if_action": {
+                                              "type": "origins:apply_effect",
+                    "effect": {
+                      "effect": "minecraft:slowness",
+                      "duration": 50,
+                      "amplifier": 1
+                    }
         }
       }
     ]
@@ -220,5 +308,5 @@
       "text": "If you are §c§oburning§r, §7enemies hit by Solaris Eclat burn with radiant flame for 5s.§r  "
     }
   ],
-  "description": "§e§oDraw faster than the setting sun.§r \nConsume §b2 Resolvement point§7 to fire a §6blazing bolt of light§r that pierces any armor and immobilize foes.  "
+  "description": ["§e§oDraw faster than the setting sun.§r \nPress (",{"keybind": "key.origins.primary_active"}, ") to consume §b2 Resolvement point§7 and fire a §6blazing bolt of light§r that pierces through armor and immobilize's foe.  "]
 }

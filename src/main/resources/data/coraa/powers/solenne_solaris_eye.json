@@ -36,20 +36,20 @@
             },
             {
               "type": "origins:target_action",
-        "action": {
-          "type": "origins:play_sound",
-          "category": "players",
-          "sound": "coraa:resolvement_gain",
-          "volume": 1
-        }
+              "action": {
+                "type": "origins:play_sound",
+                "category": "players",
+                "sound": "coraa:resolvement_gain",
+                "volume": 1
+              }
             },
             {
               "type": "origins:target_action",
               "action": {
                 "type": "origins:execute_command",
-                    "command": "execute as @s at @s positioned ~ ~2 ~ run particle minecraft:flame ~ ~ ~ 0 0 0 0.1 30 force"
+                "command": "execute as @s at @s positioned ~ ~2 ~ run particle minecraft:flame ~ ~ ~ 0 0 0 0.1 30 force"
               }
-             },
+            },
             {
               "type": "origins:actor_action",
               "action": {
@@ -73,25 +73,47 @@
             }
           },
           "if_action": {
-            "type": "origins:and",
+            "type": "origins:if_else",
+            "condition": {
+                          "type": "origins:and",
+            "conditions": [
+              {
+                "type": "origins:distance",
+                "comparison": "<=",
+                "compare_to": 10
+              },
+              {
+                "type": "origins:actor_condition",
+                "condition": {
+                    "type": "origins:origin",
+                    "layer": "origins:coin_of_covenant",
+                    "origin": "coraa:solenne_precise_coin"
+                }
+              }
+            ],
+            "inverted": true
+            },
+            "if_action": {
+                          "type": "origins:and",
             "actions": [
-                           {
-                      "type": "origins:actor_action",
-        "action": {
-          "type": "origins:play_sound",
-          "category": "players",
-          "sound": "coraa:solaris_eye_marking",
-          "volume": 1
-        }
-             },             {
-                      "type": "origins:target_action",
-        "action": {
-          "type": "origins:play_sound",
-          "category": "players",
-          "sound": "coraa:solaris_eye_marking",
-          "volume": 1
-        }
-             },
+              {
+                "type": "origins:actor_action",
+                "action": {
+                  "type": "origins:play_sound",
+                  "category": "players",
+                  "sound": "coraa:solaris_eye_marking",
+                  "volume": 1
+                }
+              },
+              {
+                "type": "origins:target_action",
+                "action": {
+                  "type": "origins:play_sound",
+                  "category": "players",
+                  "sound": "coraa:solaris_eye_marking",
+                  "volume": 1
+                }
+              },
               {
                 "type": "origins:target_action",
                 "action": {
@@ -103,7 +125,7 @@
                     },
                     {
                       "type": "origins:execute_command",
-                      "command": "resource change @s @s coraa:solaris_eye_mark_mark_duration 1"
+                      "command": "resource change @s coraa:solaris_eye_mark_mark_duration 1"
                     }
                   ]
                 }
@@ -116,15 +138,15 @@
                 }
               }
             ]
+            }
           }
         }
       },
       {
-                "type": "origins:actor_action",
-                "action": {
-                  "type": "origins:execute_command",
-                  "command": "execute as @s at @s positioned ~ ~ ~ run particle minecraft:flame ~ ~ ~ 0 0 0 0.05 30 force"
-                }
+        "type": "origins:actor_action",
+        "action": {
+          "type": "origins:nothing"
+         }
       }
     ]
   },
@@ -134,10 +156,10 @@
       {
         "type": "origins:in_block",
         "block_condition": {
-            "type": "origins:block",
-            "block": "minecraft:water"
+          "type": "origins:block",
+          "block": "minecraft:water"
         },
-            "inverted": true
+        "inverted": true
       },
       {
         "type": "origins:in_rain",

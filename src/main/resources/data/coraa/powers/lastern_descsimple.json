@@ -1,17 +1,17 @@
 {
   "type": "origins:simple",
-  "name": "§5§l✦ Abyssal Calm ✦§r",
+  "name": "§b§l✦ Abyssal Calm ✦§r",
   "badges": [
     {
       "type": "origins:tooltip",
       "sprite": "coraa:textures/gui/badge/abyss_badge_boon.png",
-      "text": "§7At low light level §7, gain §a2 Resentment/sec§7.§r"
+      "text": "§7At low light level §7, gain §a2 §1Resentment§a/sec§7.§r"
     },
     {
       "type": "origins:tooltip",
       "sprite": "coraa:textures/gui/badge/abyss_badge_boon.png",
-      "text": "§7When you attack foes while §3Sprinting§7, restore §a8 Resentment§7.  \n§7Also immune to §8blindness.§r"
+      "text": "§7When you attack foes while §3Sprinting§7, §arestore §1Resentment§7.  \n§7Also immune to §8blindness.§r"
     }
   ],
-  "description": "§0§oWhere lives stays, you chase. §r§8§oWhere no light dwells, power grows.§r"
+  "description": "§0§oWhere lives stay, you chase. §r§8§oWhere no light dwells, power grows.§r"
 }

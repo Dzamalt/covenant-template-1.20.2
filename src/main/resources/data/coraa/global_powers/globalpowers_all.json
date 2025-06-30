@@ -1,5 +1,7 @@
 {
   "powers": [
-    "coraa:coraa_antidmg"
+    "coraa:coraa_antidmg",
+    "coraa:coin_description/coin_trigger",
+    "coraa:heaven_hell_power/gift_trigger"
   ]
 }

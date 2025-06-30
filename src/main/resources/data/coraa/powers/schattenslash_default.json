@@ -5,12 +5,19 @@
     "actions": [
       {
         "type": "origins:execute_command",
-        "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^ run function coraa:schattenschnitt_frame1"
+        "command": "execute as @s at @s anchored eyes positioned ^0.3 ^-0.2 ^ run function coraa:schattenschnitt_frame1"
+      },
+      {
+        "type": "origins:change_resource",
+        "resource": "coraa:resentment_bar",
+        "change": -15,
+        "operation": "add"
       },
       {
         "type": "origins:execute_command",
         "command": "power grant @s coraa:startlag_faster"
       },
+
       {
         "type": "origins:execute_command",
         "command": "power revoke @s coraa:lastern_seekerpow_lastern_speed"
@@ -23,7 +30,7 @@
           "actions": [
             {
               "type": "origins:execute_command",
-              "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^0.3 run function coraa:schattenschnitt_frame2"
+              "command": "execute as @s at @s anchored eyes positioned ^0.3 ^-0.2 ^0.3 run function coraa:schattenschnitt_frame2"
             },
             {
               "type": "origins:play_sound",
@@ -47,7 +54,11 @@
                   },
                   {
                     "type": "origins:execute_command",
-                    "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame3"
+                    "command": "execute as @s at @s anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame3"
+                  },
+                  {
+                                                                          "type": "origins:execute_command",
+                                                      "command": "power revoke @s coraa:startlag_faster"
                   },
                   {
                     "type": "origins:change_resource",
@@ -81,22 +92,9 @@
                                           "type": "origins:and",
                                           "actions": [
                                             {
-                                              "type": "origins:damage",
-                                              "amount": 9,
-                                              "damage_type": "coraa:schattenslash"
-                                            },
-                                            {
-                                              "type": "origins:apply_effect",
-                                              "effect": {
-                                                "effect": "minecraft:slowness",
-                                                "duration": 70,
-                                                "amplifier": 2
-                                              }
-                                            },
-                                            {
                                               "type": "origins:execute_command",
                                               "command": "tag @p[distance=..6] remove schattenschnitt_hit"
-                                            } ,
+                                            },
                                             {
                                               "type": "origins:execute_command",
                                               "command": "execute as @s at @s positioned ~ ~1 ~ run function coraa:schattenschnitt_spark"
@@ -104,7 +102,7 @@
                                             {
                                               "type": "origins:execute_command",
                                               "command": "tag @s add coraa_knockback_me"
-                                            } 
+                                            }
                                           ]
                                         }
                                       },
@@ -112,7 +110,7 @@
                                         "type": "origins:add_to_set",
                                         "set": "coraa:knockback_set"
                                       }
-                                      ]
+                                    ]
                                   },
                                   "bientity_condition": {
                                     "type": "origins:target_condition",
@@ -140,37 +138,139 @@
                           }
                         },
                         {
-                            "type": "origins:area_of_effect",
-                            "radius": 7,
-                            "bientity_action": {
-                              "type": "origins:and",
-                              "actions": [
-                                {
-                                  "type": "apoli:add_velocity",
-                                  "z": 1
-                                  
-                                },
-                                {
-                                  "type": "origins:target_action",
-                                  "action": {
-                                    "type": "origins:add_velocity",
-                                    "y": 0.5
+                          "type": "origins:area_of_effect",
+                          "radius": 7,
+                          "bientity_action": {
+                            "type": "origins:and",
+                            "actions": [
+                              {
+                                "type": "origins:if_else",
+                                "condition": {
+                                  "type": "origins:actor_condition",
+                                  "condition": {
+                                    "type": "origins:origin",
+                                    "layer": "origins:coin_of_covenant",
+                                    "origin": "coraa:lastern_unrestrained_coin",
+                                    "inverted": true
                                   }
                                 },
-                                {
+                                "if_action": {
+                                  "type": "origins:and",
+                                  "actions": [
+                                    {
+                                      "type": "origins:target_action",
+                                      "action": {
+                                        "type": "origins:damage",
+                                        "amount": 9,
+                                        "damage_type": "coraa:schattenslash"
+                                      }
+                                    },
+                                    {
+                                      "type": "origins:target_action",
+                                      "action": {
+                                        "type": "origins:apply_effect",
+                                        "effect": {
+                                          "effect": "minecraft:slowness",
+                                          "duration": 70,
+                                          "amplifier": 2
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "type": "origins:add_velocity",
+                                      "z": 1
+                                    },
+                                    {
+                                      "type": "origins:target_action",
+                                      "action": {
+                                        "type": "origins:add_velocity",
+                                        "y": 0.5
+                                      }
+                                    }
+                                  ]
+                                },
+                                "else_action": {
                                   "type": "origins:target_action",
                                   "action": {
-                                    "type": "origins:execute_command",
-                                    "command": "tag @s remove coraa_knockback_me"
+                                    "type": "origins:damage",
+                                    "amount": 7,
+                                    "damage_type": "coraa:schattenslash"
                                   }
                                 }
-                              ]
-                            },
-                            "bientity_condition": {
-                              "type": "origins:target_condition",
-                              "condition": {
-                                "type": "origins:nbt",
-                                "nbt": "{Tags: [\"coraa_knockback_me\"]}"
+                              },
+                              {
+                                "name": "Lastern shadow afterslash",
+                                "type": "origins:if_else",
+                                "condition": {
+                                  "type": "origins:and",
+                                  "conditions": [
+                                    {
+                                      "type": "origins:actor_condition",
+                                      "condition": {
+                                        "type": "origins:origin",
+                                        "layer": "origins:coin_of_covenant",
+                                        "origin": "coraa:lastern_sightless_coin"
+                                      }
+                                    },
+                                    {
+                                      "type": "origins:target_condition",
+                                      "condition": {
+                                        "type": "origins:status_effect",
+                                        "effect": "minecraft:blindness"
+                                      }
+                                    }
+                                  ]
+                                },
+                                "if_action": {
+                                  "type": "origins:delay",
+                                  "ticks": 15,
+                                  "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                      {
+                                        "type": "origins:target_action",
+                                        "action": {
+                                          "type": "origins:and",
+                                          "actions": [
+                                            {
+                                              "type": "origins:damage",
+                                              "amount": 5,
+                                              "damage_type": "coraa:schattenslash"
+                                            },
+                                            {
+                                              "type": "origins:execute_command",
+                                              "command": "execute positioned ^ ^1 ^ facing entity @p eyes run function coraa:lastern_minislash"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "type": "origins:actor_action",
+                                        "action": {
+                                          "type": "origins:play_sound",
+                                          "category": "players",
+                                          "sound": "small_schattenschnitt",
+                                          "volume": 5
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              },
+                              {
+                                "type": "origins:target_action",
+                                "action": {
+                                  "type": "origins:execute_command",
+                                  "command": "tag @s remove coraa_knockback_me"
+                                }
+                              }
+                            ]
+                          },
+                          "bientity_condition": {
+                            "type": "origins:target_condition",
+                            "condition": {
+                              "type": "origins:nbt",
+                              "nbt": "{Tags: [\"coraa_knockback_me\"]}"
                             }
                           }
                         },
@@ -192,7 +292,7 @@
                                 "actions": [
                                   {
                                     "type": "origins:execute_command",
-                                    "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame3"
+                                    "command": "execute as @s at @s anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame3"
                                   },
                                   {
                                     "type": "origins:play_sound",
@@ -208,7 +308,7 @@
                                       "actions": [
                                         {
                                           "type": "origins:execute_command",
-                                          "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame4"
+                                          "command": "execute as @s at @s anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame4"
                                         },
                                         {
                                           "type": "origins:delay",
@@ -218,7 +318,7 @@
                                             "actions": [
                                               {
                                                 "type": "origins:execute_command",
-                                                "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame5"
+                                                "command": "execute as @s at @s anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame5"
                                               },
                                               {
                                                 "type": "origins:delay",
@@ -228,7 +328,7 @@
                                                   "actions": [
                                                     {
                                                       "type": "origins:execute_command",
-                                                      "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^0.3 run function coraa:schattenschnitt_frame6"
+                                                      "command": "execute as @s at @s anchored eyes positioned ^0.3 ^-0.2 ^0.3 run function coraa:schattenschnitt_frame6"
                                                     },
                                                     {
                                                       "type": "origins:delay",
@@ -238,11 +338,10 @@
                                                         "actions": [
                                                           {
                                                             "type": "origins:execute_command",
-                                                            "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^0.3 run function coraa:schattenschnitt_frame7"
+                                                            "command": "execute as @s at @s anchored eyes positioned ^0.3 ^-0.2 ^0.3 run function coraa:schattenschnitt_frame7"
                                                           },
                                                           {
-                                                            "type": "origins:execute_command",
-                                                            "command": "power revoke @s coraa:startlag_faster"
+                                                            "type": "origins:nothing"
                                                           }
                                                         ]
                                                       }
@@ -267,7 +366,7 @@
                                 "actions": [
                                   {
                                     "type": "origins:execute_command",
-                                    "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame4"
+                                    "command": "execute as @s at @s anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame4"
                                   },
                                   {
                                     "type": "origins:execute_command",
@@ -281,7 +380,7 @@
                                       "actions": [
                                         {
                                           "type": "origins:execute_command",
-                                          "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame5"
+                                          "command": "execute as @s at @s anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame5"
                                         },
                                         {
                                           "type": "origins:delay",
@@ -291,7 +390,7 @@
                                             "actions": [
                                               {
                                                 "type": "origins:execute_command",
-                                                "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^0.3 run function coraa:schattenschnitt_frame6"
+                                                "command": "execute as @s at @s anchored eyes positioned ^0.3 ^-0.2 ^0.3 run function coraa:schattenschnitt_frame6"
                                               },
                                               {
                                                 "type": "origins:delay",
@@ -301,11 +400,10 @@
                                                   "actions": [
                                                     {
                                                       "type": "origins:execute_command",
-                                                      "command": "execute as @p at @p anchored eyes positioned ^0.3 ^-0.2 ^0.3 run function coraa:schattenschnitt_frame7"
+                                                      "command": "execute as @s at @s anchored eyes positioned ^0.3 ^-0.2 ^0.3 run function coraa:schattenschnitt_frame7"
                                                     },
                                                     {
-                                                      "type": "origins:execute_command",
-                                                      "command": "power revoke @s coraa:startlag_faster"
+                                                      "type": "origins:nothing"
                                                     }
                                                   ]
                                                 }
@@ -343,6 +441,12 @@
         }
       }
     ]
+  },
+  "condition": {
+    "type": "origins:resource",
+    "resource": "coraa:resentment_bar",
+    "comparison": ">=",
+    "compare_to": 15
   },
   "cooldown": 20
 }

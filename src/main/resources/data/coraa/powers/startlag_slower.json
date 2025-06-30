@@ -1,0 +1,21 @@
+{
+        "type": "origins:multiple",
+        "nosprint":{
+                "type": "origins:prevent_sprinting"
+        },
+        "slower":{
+                "type": "origins:attribute",
+    "modifier": {
+      "attribute": "minecraft:generic.movement_speed",
+      "value": -0.50,
+      "operation": "multiply_base"
+    }
+        },
+        "mini_resistance":{
+    "type": "origins:modify_damage_taken",
+    "modifier": {
+      "operation": "multiply_base",
+      "value": -0.25
+    }
+        }
+}

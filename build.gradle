@@ -81,8 +81,6 @@ dependencies {
 	modImplementation "com.github.apace100:origins-fabric:${project.origins_version}"
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	// GeckoLib
-	modImplementation "software.bernie.geckolib:geckolib-fabric-1.20.2:4.3.1" // replace with latest if needed
 
 }
 

@@ -13,6 +13,32 @@
         "command": "power grant @s coraa:lastern_seekerpow"
       },
       {
+        "name": "short immunity",
+              "type": "origins:if_else",
+              "condition": {
+                "type": "origins:origin",
+                "layer": "origins:coin_of_covenant",
+                "origin": "coraa:lastern_shade_coin"
+              },
+              "if_action": {
+                "type": "origins:and",
+                "actions": [
+                  {
+                      "type": "origins:execute_command",
+                      "command": "power grant @s coraa:lastern_coin_short_immune"
+                  },
+                  {
+                    "type": "origins:delay",
+                    "ticks": 30,
+                    "action": {
+                                            "type": "origins:execute_command",
+                      "command": "power revoke @s coraa:lastern_coin_short_immune"
+                    }
+                  }
+                ]
+              }
+      },
+      {
         "type":"origins:delay",
         "ticks": 15,
         "action": {
@@ -39,19 +65,19 @@
       }
     ]
   },
-  "name": "§5§l✦Suchende Gestalt✦§r",
+  "name": "§d§l✦Suchende Gestalt✦§r",
   "badges": [
     {
       "type": "origins:tooltip",
       "sprite": "coraa:textures/gui/badge/abyss_badge_active.png",
-      "text": "§5§l✦ Schattenschnitt ✦§r: §8§oCut the silence — §4 bleed them into stillness.§r  \n§7A sweeping slash of gloom that §9slows§7 and wounds foes for §c9 damage§7.  \n§7Exits §oSuchende Gestalt§7 upon use.§r"
+      "text": "§d§l✦ Schattenschnitt ✦§r: §8§oCut the silence — §4 bleed them into stillness.§r\n§7A sweeping slash of gloom that §9slows§7 and wounds foes for §c9 damage§7.  \n§7Exits §d§oSuchende Gestalt§7 upon use.§r"
     }
   ],
   "description": [
-  "§5§oSlip between veils — unseen swiftness, yet fragile.§r\n§7Become truly invisible and swift, draining §5Resentment§7 over time.\n§7§oAny attack, action, or blow breaks the illusion§7 — getting hit §c§ostuns§7 you briefly. §7While hidden, press §o(",
+  "§d§oSlip between veils — unseen swiftness, yet fragile.§r\n§7Become truly invisible and swift, draining §1Resentment§7 over time.\n§7§oAny attack, action, or blow breaks the illusion§7 — getting hit §c§ostuns§7 you briefly. §7While hidden, press §o(",
     {
       "keybind": "key.origins.primary_active"
     },
-    ")§r§7 to unleash §5Schattenschnitt§r§7 that slows and strikes with shadow.§r"
+    ")§r§7 to §bConsume 15% §1Resentment§7 and unleash §d§oSchattenschnitt.§r§7"
     ]
 }

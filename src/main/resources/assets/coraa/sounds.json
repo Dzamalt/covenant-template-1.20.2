@@ -18,7 +18,7 @@
         ]
     },
 "resentment_hard_gain":{
-            "subtitle": "Resentment obtained",
+            "subtitle": "Shadow engulfs",
         "sounds": [
             "coraa:resentment_hard_gain"
         ]
@@ -81,6 +81,24 @@
         "subtitle": "Solaris branded",
         "sounds": [
             "coraa:solaris_eye_marking"
+        ]
+    },
+            "shadow_harvest":{
+        "subtitle": "The shadow reaps",
+        "sounds": [
+            "coraa:shadow_harvest"
+        ]
+    },
+            "small_schattenschnitt":{
+        "subtitle": "The shadow rips",
+        "sounds": [
+            "coraa:small_schattenschnitt"
+        ]
+    },
+                "parry_coraa":{
+        "subtitle": "Attack parried",
+        "sounds": [
+            "coraa:countersmall"
         ]
     }
 }
