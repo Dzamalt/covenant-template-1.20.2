@@ -1,0 +1,76 @@
+{
+    "order": 7,
+    "origins": [
+        {
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                                        "type": "origins:origin",
+                "layer": "origins:origin",
+                "origin": "coraa:lastern"
+                    },
+                                                            {
+                        "type": "origins:resource",
+                        "resource": "coraa:coin_description/coin_trigger_is_choosing_coraa_stuff",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    {
+                        "type": "origins:equipped_item",
+                        "equipment_slot": "mainhand",
+                        "item_condition": {
+                "type": "origins:nbt",
+                "nbt": "{coinOfCovenant:1b}"
+                        }
+                    }
+                ]
+            },
+            "origins": [
+                "coraa:lastern_shade_coin",
+                "coraa:lastern_sightless_coin",
+                "coraa:lastern_unrestrained_coin",
+                "coraa:cancel_coin"
+            ]
+        },
+        {
+                        "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                                        "type": "origins:origin",
+                "layer": "origins:origin",
+                "origin": "coraa:solenne"
+                    },
+                                        {
+                        "type": "origins:resource",
+                        "resource": "coraa:coin_description/coin_trigger_is_choosing_coraa_stuff",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    {
+                        "type": "origins:equipped_item",
+                        "equipment_slot": "mainhand",
+                        "item_condition": {
+                "type": "origins:nbt",
+                "nbt": "{coinOfCovenant:1b}"
+                        }
+                    }
+                ]
+            },
+            "origins": [
+                "coraa:solenne_blaze_coin",
+                "coraa:solenne_precise_coin",
+                "coraa:solenne_unwavering_coin"
+            ]
+        }
+    ],
+    "enabled": true,
+    "name": "Choose your two-sided coin.",
+    "gui_title": {
+        "choose_origin": "Choose your two-sided coin.",
+        "view_origin": "This is your your two-sided coin."
+    },
+    "missing_name": "None",
+    "missing_description": "You currently have not flipped the §bCoin of Covenant§7."
+}

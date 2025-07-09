@@ -1,0 +1,24 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:diamond",
+      "nbt": "{CustomModelData:696807}"
+    },
+    "title": "Covenant",
+    "description": "Shall you harness the radiant light? or plunge deep into the abyss?",
+    "background": "minecraft:textures/block/warped_stem.png",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "criteria": {
+    "asdfasdf": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [],
+  "rewards": {
+    "experience": 1
+  }
+}

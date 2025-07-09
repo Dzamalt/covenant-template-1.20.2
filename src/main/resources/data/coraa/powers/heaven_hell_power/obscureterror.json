@@ -1,0 +1,69 @@
+{
+    "type": "origins:active_self",
+    "cooldown": 300,
+    "key": {
+        "key": "key.origins.secondary_active"
+    },
+    "hud_render": {
+        "should_render": true,
+        "bar_index": 2,
+        "sprite_location": "coraa:textures/gui/coraa_cooldown_bars.png"
+    },
+    "condition": {
+                        "type": "origins:and",
+        "conditions": [
+            {
+                        "type": "origins:resource",
+        "resource": "coraa:resentment_bar",
+        "comparison": ">=",
+        "compare_to": 15
+            },
+            {
+                        "type": "origins:resource",
+        "resource": "coraa:seeker_bar",
+        "comparison": "==",
+        "compare_to": 0
+            }
+        ]
+    },
+    "hidden": true,
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:change_resource",
+                "resource": "coraa:resentment_bar",
+                "change": -15,
+                "operation": "add"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @s coraa:heaven_hell_power/obscureterror_state"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @s coraa:movestun"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @s coraa:startlag_slower"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @s coraa:vignette"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @s coraa:disable_action"
+            },
+            {
+                "type": "origins:delay",
+                "ticks": 1,
+                "action": {
+                      "type": "origins:execute_command",
+                      "command": "resource change @s coraa:heaven_hell_power/obscureterror_state_counter_duration 1"
+                }
+            }
+        ]
+    }
+}

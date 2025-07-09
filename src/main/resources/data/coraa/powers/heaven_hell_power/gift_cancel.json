@@ -1,0 +1,22 @@
+{
+"type": "origins:action_on_callback",
+    "entity_action_gained": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:execute_command",
+          "command": "give @s minecraft:iron_nugget{display:{Name:'{\"text\":\"Heaven Hell sent Gift\",\"color\":\"light_purple\"}',Lore:['{\"text\":\"Only for those aligned with \"}','[{\"text\":\"Radiance\",\"color\":\"yellow\",\"bold\":true},{\"text\":\" or \",\"color\":\"dark_purple\",\"bold\":false},{\"text\":\"Abyss\",\"color\":\"dark_blue\"},{\"text\":\".\",\"color\":\"dark_purple\",\"bold\":false}]','{\"text\":\"The blessing from above and below are only for them.\"}']},CustomModelData:696804,heavenHellGift:1b,Enchantments:[{}]} 1"
+        },
+        {
+            "type": "origins:delay",
+            "ticks": 2,
+            "action": {
+                          "type": "origins:execute_command",
+          "command": "origin set @s origins:heaven_hell_gift origins:empty"
+            }
+        }
+      ]
+    },
+    "execute_chosen_when_orb": true,
+    "hidden": true
+}

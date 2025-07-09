@@ -178,6 +178,10 @@
         {
           "type": "origins:execute_command",
           "command": "team modify shadowblade color dark_purple"
+        },
+        {
+                    "type": "origins:execute_command",
+          "command": "advancement grant @s only coraa:main/abyss"
         }
       ]
     },

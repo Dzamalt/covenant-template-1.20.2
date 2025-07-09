@@ -15,6 +15,12 @@
           "custom_model_data": 696802
         },
         "model": "minecraft:item/solenne_logo"
+      },
+                  {
+        "predicate": {
+          "custom_model_data": 696807
+        },
+        "model": "minecraft:item/covenant_orb"
       }
     ]
   }

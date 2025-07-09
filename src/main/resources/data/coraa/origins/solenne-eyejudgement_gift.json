@@ -1,0 +1,14 @@
+{
+                    "powers": [
+        "coraa:coin_description/solenne_blaze"
+    ],
+    "icon":{
+
+                "item": "minecraft:diamond",
+    "tag": "{CustomModelData:696802,Enchantments:[{}]}"
+    },
+    "impact": 1,
+    "order": 1,
+    "name": "Horizon View",
+    "description":"The coin fates you §cBlazing§7. Everything §cengulfed§7 in §aflame§7."
+}

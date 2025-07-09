@@ -1,2 +1,4 @@
-scoreboard objectives add smokeTimer dummy
-scoreboard objectives add smokeRadius dummy
+team add shadowblade
+team modify shadowblade color dark_purple
+team add solenne_shooters
+team modify shadowblade color gold

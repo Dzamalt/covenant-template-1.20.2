@@ -1,0 +1,13 @@
+{
+        "powers": [
+        "coraa:coin_description/lastern_unrestrained"
+    ],
+    "icon":{
+                "item": "minecraft:gold_nugget",
+    "tag": "{CustomModelData:696803}"
+    },
+    "impact": 1,
+    "order": 1,
+    "name": "Coin of the §6Unrestrained",
+    "description":"The coin fates you §6unrestrained§7. §aFreedom §cbehind§7 your shadow§7."
+}

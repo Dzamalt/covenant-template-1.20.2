@@ -1,0 +1,196 @@
+{
+    "type": "origins:active_self",
+    "key": {
+        "key": "key.origins.secondary_active"
+    },
+    "hud_render": {
+        "should_render": true,
+        "bar_index": 1,
+        "sprite_location": "coraa:textures/gui/coraa_cooldown_bars.png"
+    },
+    "cooldown": 300,
+    "hidden": true,
+    "condition": {
+                "type": "origins:and",
+        "conditions": [
+            {
+                        "type": "origins:resource",
+        "resource": "coraa:resentment_bar",
+        "comparison": ">=",
+        "compare_to": 15
+            },
+            {
+                        "type": "origins:resource",
+        "resource": "coraa:seeker_bar",
+        "comparison": "==",
+        "compare_to": 0
+            }
+        ]
+    },
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "tag @s add me_teleport_ghostlunge"
+            },
+                        {
+                "type": "origins:play_sound",
+                "category": "players",
+                "sound": "coraa:resentment_hard_gain",
+                "volume": 1
+            },
+            {
+                "type": "origins:change_resource",
+                "resource": "coraa:resentment_bar",
+                "change": -15,
+                "operation": "add"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @s coraa:startlag_faster"
+            },
+                        {
+                "type": "origins:execute_command",
+                "command": "power grant @s coraa:vignette"
+            },
+            {
+                "type": "origins:raycast",
+                "distance": 20,
+                "bientity_action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                           "type": "origins:nothing"
+                        },
+                        {
+                            "type": "origins:delay",
+                            "ticks": 6,
+                            "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:damage",
+                                        "amount": 12,
+                                        "damage_type": "coraa:schattenslash"
+                                    },
+                                    {
+                                        "type": "origins:delay",
+                                        "ticks": 1,
+                                        "action": {
+                                                                                    "type": "origins:if_else",
+                                        "condition": {
+                                            "type": "origins:target_condition",
+                                            "condition": {
+                                                "type": "origins:health",
+                                                "comparison": "<",
+                                                "compare_to": 1
+                                            }
+                                        },
+                                        "if_action": {
+                                            "type": "origins:actor_action",
+                                            "action": {
+                                            "type": "origins:change_resource",
+                                            "resource": "coraa:seeker_bar",
+                                            "change": 1,
+                                            "operation": "set"
+                                            }
+                                        }
+                                        }
+                                    },
+                                    {
+                                      "type": "origins:add_velocity",
+                                      "z": 0.5
+                                    },
+                                    {
+                                        "type": "origins:actor_action",
+                                        "action": {
+                                          "type": "origins:play_sound",
+                                          "category": "players",
+                                          "sound": "coraa:small_schattenschnitt",
+                                          "volume": 5
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:target_action",
+                                        "action": {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @s at @s positioned ~ ~2 ~ run particle minecraft:dragon_breath ~ ~ ~ 0 0 0 0.15 100 force"
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:target_action",
+                                        "action":  {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @s at @s run tp @e[tag=me_teleport_ghostlunge] ~ ~ ~"
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:target_action",
+                                        "action": {
+                                                                                    "type": "origins:apply_effect",
+                                        "effect": {
+                                          "effect": "minecraft:blindness",
+                                          "duration": 70,
+                                          "amplifier": 1
+                                        }
+                                        }
+                                    },
+                                    {
+                                        "type": "origins:actor_action",
+                                        "action": {
+                                            "type": "origins:and",
+                                            "actions": [
+                                                {
+                                                    "type": "origins:execute_command",
+                                                    "command": "power revoke @s coraa:startlag_faster"
+                                                },
+                                                {
+                                                    "type": "origins:execute_command",
+                                                    "command": "tag @s remove me_teleport_ghostlunge"
+                                                },
+                                                {
+                                                    "type": "origins:execute_command",
+                                                    "command": "power revoke @s coraa:vignette"
+                                                },
+                                                {
+                                                    "type": "origins:execute_command",
+                                                    "command": "execute as @s at @s anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame4"
+                                                }
+            
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
+                "bientity_condition": {
+                    "type": "origins:relative_rotation",
+                    "actor_rotation": "head",
+                    "target_rotation": "head",
+                    "comparison": ">=",
+                    "compare_to": 0.4
+                }
+            },
+            {
+                "type": "origins:delay",
+                "ticks": 6,
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                                                    "type": "origins:execute_command",
+                    "command": "power revoke @s coraa:startlag_faster"
+                        },
+                        {
+                            "type": "origins:execute_command",
+                                                    "command": "power revoke @s coraa:vignette"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}

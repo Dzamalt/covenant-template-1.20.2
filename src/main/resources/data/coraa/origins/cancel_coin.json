@@ -1,0 +1,13 @@
+{
+        "powers": [
+        "coraa:coin_description/coin_cancel"
+    ],
+    "icon":{
+                "item": "minecraft:gold_nugget",
+    "tag": "{CustomModelData:696803}"
+    },
+    "impact": 1,
+    "order": 1,
+    "name": "Reserve",
+    "description":"Save the coin for another time."
+}

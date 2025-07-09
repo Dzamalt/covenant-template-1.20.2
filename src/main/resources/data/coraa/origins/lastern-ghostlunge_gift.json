@@ -1,0 +1,18 @@
+{
+                    "powers": [
+        "coraa:heaven_hell_power/ghostlunge",
+        "coraa:heaven_hell_power/ghostlunge_indic"
+    ],
+    "icon":{
+
+                "item": "minecraft:diamond",
+    "tag": "{CustomModelData:696801,Enchantments:[{}]}"
+    },
+    "impact": 2,
+    "order": 2,
+    "name": "§d§l✦Ghost Lunge✦§r",
+    "description":["§d§oThey won't see the strike that comes from sorrow. \n§r§7Pressing (",
+    {"keybind": "key.origins.secondary_active"},
+    "§7) while not in §d§oSuchende Gestalt§7 will consume §1Resentment§7 and lock you on a target -- then fade and slit their eye with unmatched speed. §cOnly those who turns a blind eye can be locked§7. Assasination result you to enter §d§oSuchende Gestalt§7."
+]
+}

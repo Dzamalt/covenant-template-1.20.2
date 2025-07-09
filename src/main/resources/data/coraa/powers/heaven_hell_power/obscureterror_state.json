@@ -1,0 +1,218 @@
+{
+    "type": "origins:multiple",
+    "counter_duration":{
+        "type": "origins:cooldown",
+        "cooldown": 30
+    },
+    "counter_duration_checker":{
+        "type": "origins:action_over_time",
+        "interval": 5,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "coraa:heaven_hell_power/obscureterror_state_counter_duration",
+            "comparison": "==",
+            "compare_to": 0
+        },
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [
+                {
+                                "type": "origins:execute_command",
+                                "command": "power revoke @s coraa:disable_action"
+                            },
+                                                        {
+                                "type": "origins:execute_command",
+                                "command": "power revoke @s coraa:vignette"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power revoke @s coraa:movestun"
+                            },
+                                                        {
+                                "type": "origins:execute_command",
+                                "command": "power revoke @s coraa:startlag_slower"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power revoke @s coraa:heaven_hell_power/obscureterror_state"
+                                
+                            }
+            ]
+        }
+    },
+    "schattenschnitt_counter":{
+        "type": "origins:action_when_hit",
+        "bientity_condition": {
+            "type": "origins:distance",
+            "comparison": "<=",
+            "compare_to": 5
+        },
+        "cooldown": 20,
+        "bientity_action": {
+            "type": "origins:and",
+            "actions": [
+                {   
+                    "type": "origins:actor_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power grant @s coraa:startlag_slower"  
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power grant @s coraa:movestun"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power grant @s coraa:disable_action"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:target_action",
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power revoke @s coraa:startlag_slower"
+                            },
+                                                        {
+                                "type": "origins:execute_command",
+                                "command": "power revoke @s coraa:vignette"
+                            },
+                            {
+                                    "type": "origins:play_sound",
+                                    "category": "players",
+                                    "sound": "coraa:parry_coraa",
+                                    "volume": 6
+                            },
+                            {
+                                "type": "origins:delay",
+                                "ticks": 8,
+                                "action": {
+                                    "type": "origins:play_sound",
+                                    "category": "players",
+                                    "sound": "coraa:schattenschnitt_basic",
+                                    "volume": 6
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    "type": "origins:delay",
+                    "ticks": 10,
+                    "action": {
+                        "type": "origins:and",
+                        "actions": [
+                            {
+                                "type": "origins:invert",
+                                "action": {
+                                    "type": "origins:damage",
+                                "amount": 12,
+                                "damage_type": "coraa:schattenslash"
+                                }
+                            },
+                            {
+                                "type": "origins:invert",
+                                "action": {
+                                    "type": "origins:add_velocity",
+                                    "z": 0.5
+                                }
+                            },
+                            {
+                                "type": "origins:target_action",
+                                "action": {
+                                    "type": "origins:and",
+                                    "actions": [
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "execute as @s at @s anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame3"
+                                        },
+                                        {
+                                            "type": "origins:delay",
+                                            "ticks": 2,
+                                            "action": {
+                                                "type": "origins:execute_command",
+                                            "command": "execute as @s at @s anchored eyes positioned ^0.3 ^-0.2 ^-1.3 run function coraa:schattenschnitt_frame4"
+                                            }
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "power revoke @s coraa:disable_action"  
+                                        },
+                                        {
+                                            "type": "origins:execute_command",
+                                            "command": "power revoke @s coraa:movestun"
+                                        },
+                                        {
+                                            "type": "origins:change_resource",
+                                            "resource": "coraa:resentment_bar",
+                                            "change": 30,
+                                            "operation": "add"
+                                        },
+                                        {
+                                            "type": "origins:delay",
+                                            "ticks": 1,
+                                            "action": {
+                                                "type": "origins:execute_command",
+                                                "command": "power revoke @s coraa:heaven_hell_power/obscureterror_state"
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                              "type": "origins:actor_action",
+                              "action": {
+                                "type": "origins:and",
+                                "actions": [
+                                    {
+                                        "type": "origins:execute_command",
+                                        "command": "execute as @s at @s positioned ~ ~1.5 ~ run function coraa:small_lastern_spark"
+                                    },
+                                    {
+                                "type": "origins:execute_command",
+                                "command": "power revoke @s coraa:startlag_slower"  
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power revoke @s coraa:movestun"
+                            },
+                            {
+                                "type": "origins:execute_command",
+                                "command": "power revoke @s coraa:disable_action"
+                            }
+                                ]
+                              }  
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    },
+    "particle_resonator":{
+        "type": "origins:action_over_time",
+        "interval": 2,
+        "entity_action": {
+            "type": "origins:execute_command",
+            "command": "particle minecraft:smoke ~ ~ ~ 0 0 0 0.1 50 force"
+        }
+    },
+    "skintransparent":{
+        "type": "origins:model_color",
+        "alpha": 0.7
+    },
+    "reduce_dmg":{
+        "type": "origins:modify_damage_taken",
+        "modifier":{
+            "operation":"multiply_base",
+            "value": -0.60
+        }
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "type": "origins:multiple",
+    "antiuseitem":{
+        "type": "origins:prevent_item_use"
+    },
+    "antiblockplace":{
+        "type": "origins:prevent_block_place"
+    },
+    "antientityuse":{
+        "type": "origins:prevent_entity_use"
+    }
+}

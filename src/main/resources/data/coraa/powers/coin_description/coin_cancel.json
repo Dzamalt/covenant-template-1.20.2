@@ -1,0 +1,22 @@
+{
+"type": "origins:action_on_callback",
+    "entity_action_gained": {
+      "type": "origins:and",
+      "actions": [
+        {
+          "type": "origins:execute_command",
+          "command": "give @s minecraft:gold_nugget{display:{Name:'{\"text\":\"Coin of Covenant\",\"color\":\"aqua\"}',Lore:['{\"text\":\"Only for those aligned with \"}','[{\"text\":\"Radiance\",\"color\":\"yellow\",\"bold\":true},{\"text\":\" or \",\"color\":\"dark_purple\",\"bold\":false},{\"text\":\"Abyss\",\"color\":\"dark_blue\"},{\"text\":\".\",\"color\":\"dark_purple\",\"bold\":false}]','[{\"text\":\"Only they dare to take the \"},{\"text\":\"risk \",\"color\":\"red\"},{\"text\":\"of flipping this coin for the \",\"color\":\"reset\"},{\"text\":\"reward\",\"color\":\"green\"},{\"text\":\".\",\"color\":\"reset\"}]']},coinOfCovenant:1b,CustomModelData:696803,Enchantments:[{}]} 1"
+        },
+        {
+            "type": "origins:delay",
+            "ticks": 2,
+            "action": {
+                          "type": "origins:execute_command",
+          "command": "origin set @s origins:coin_of_covenant origins:empty"
+            }
+        }
+      ]
+    },
+    "execute_chosen_when_orb": true,
+    "hidden": true
+}

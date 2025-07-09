@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:iron_nugget",
+      "nbt": "{CustomModelData:696804}"
+    },
+    "title": "Underworld Resonance",
+    "description": "Sacrifice an abyssal flame with a radiant tears.",
+    "background": "minecraft:textures/block/warped_stem.png",
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "coraa:main/coin_of_covenant",
+  "criteria": {
+    "asdfasdf": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [],
+  "rewards": {
+    "experience": 10
+  }
+}

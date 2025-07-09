@@ -1,0 +1,14 @@
+{
+                    "powers": [
+        "coraa:coin_description/solenne_blaze"
+    ],
+    "icon":{
+
+                "item": "minecraft:gold_nugget",
+    "tag": "{CustomModelData:696803}"
+    },
+    "impact": 1,
+    "order": 1,
+    "name": "Coin of the §cBlaze",
+    "description":"The coin fates you §cBlazing§7. Everything §cengulfed§7 in §aflame§7."
+}

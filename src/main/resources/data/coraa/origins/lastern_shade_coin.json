@@ -1,0 +1,13 @@
+{   
+    "powers": [
+        "coraa:coin_description/lastern_shade"
+    ],
+    "icon":{
+                "item": "minecraft:gold_nugget",
+    "tag": "{CustomModelData:696803}"
+    },
+    "impact": 1,
+    "order": 1,
+    "name": "Coin of the §7Shade",
+    "description":"The coin fates you §8shaded§7. §cWhy fight§7 when you can §afade§7?"
+}

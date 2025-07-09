@@ -227,20 +227,17 @@
   "lastern_coin_dmg_invuln": {
     "type": "origins:invulnerability",
     "damage_condition": {
-      "type": "origins:and",
-      "conditions": [
-        {
-          "type": "origins:in_tag",
-          "tag": "minecraft:is_fall"
-        },
-        {
-          "type": "origins:type",
-          "damage_type": "minecraft:fly_into_wall"
-        }
-      ]
+          "type": "origins:name",
+          "name": "fall"
+
+    },
+    "condition": {
+            "type": "origins:origin",
+      "layer": "origins:coin_of_covenant",
+      "origin": "coraa:lastern_shade_coin"
     }
   },
-  "lastern_con_reducedmg": {
+  "lastern_coin_reducedmg": {
     "type": "origins:modify_damage_taken",
     "modifier": {
       "operation": "multiply_base",
@@ -249,8 +246,7 @@
     "condition": {
       "type": "origins:origin",
       "layer": "origins:coin_of_covenant",
-      "origin": "coraa:lastern_unrestrained_coin",
-      "inverted": true
+      "origin": "coraa:lastern_unrestrained_coin"
     }
   }
 }

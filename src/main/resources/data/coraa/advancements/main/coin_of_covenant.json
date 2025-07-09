@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:gold_nugget",
+      "nbt": "{CustomModelData:696803}"
+    },
+    "title": "Risk vs Reward",
+    "description": "Craft a Coin of Covenant by using an ender pearl on a diamond.",
+    "background": "minecraft:textures/block/warped_stem.png",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+    "parent": "coraa:main/covenant",
+  "criteria": {
+    "asdfasdf": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [],
+  "rewards": {
+    "experience": 10
+  }
+}

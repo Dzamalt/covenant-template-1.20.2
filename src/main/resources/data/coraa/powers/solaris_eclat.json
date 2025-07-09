@@ -308,5 +308,5 @@
       "text": "If you are §c§oburning§r, §7enemies hit by Solaris Eclat burn with radiant flame for 5s.§r  "
     }
   ],
-  "description": ["§e§oDraw faster than the setting sun.§r \nPress (",{"keybind": "key.origins.primary_active"}, ") to consume §b2 Resolvement point§7 and fire a §6blazing bolt of light§r that pierces through armor and immobilize's foe.  "]
+  "description": ["§e§oDraw faster than the setting sun.§r \nPress (",{"keybind": "key.origins.primary_active"}, ") to consume §eResolvement§7 and fire a §6blazing bolt of light§r that pierces through armor and immobilize's foe.  "]
 }

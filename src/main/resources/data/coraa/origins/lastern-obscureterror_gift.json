@@ -1,0 +1,17 @@
+{
+                    "powers": [
+        "coraa:heaven_hell_power/obscureterror"
+    ],
+    "icon":{
+
+                "item": "minecraft:diamond",
+    "tag": "{CustomModelData:696801,Enchantments:[{}]}"
+    },
+    "impact": 2,
+    "order": 2,
+    "name": "§d§l✦Terror Counter✦§r",
+    "description":["§d§oPunish the whisperer -- until they speak tears. \n§r§7Pressing (",
+                {"keybind": "key.origins.secondary_active"}, 
+                "§7) will consume §1Resentment§7, then obscure yourself for a short time. Getting hit while being obscure will stun the attacker and unleash a shadow strike. Restore §1Resentment§7 upon countering foes."
+]
+}

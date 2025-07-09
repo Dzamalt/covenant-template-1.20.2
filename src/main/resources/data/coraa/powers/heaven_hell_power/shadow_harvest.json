@@ -1,0 +1,149 @@
+{
+    "type": "origins:active_self",
+    "key": {
+        "key": "key.origins.secondary_active"
+    },
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                "type": "origins:execute_command",
+                "command": "tag @s add harvesting_them_soul"
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "power grant @s coraa:startlag_slower"
+            },
+            {
+                "type": "origins:play_sound",
+                "category": "players",
+                "sound": "coraa:resentment_hard_gain",
+                "volume": 1
+            },
+            {
+                "type": "origins:delay",
+                "ticks": 6,
+                "action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute as @s at @s positioned ~ ~ ~ run particle minecraft:sculk_soul ~ ~ ~ 0 0 0 0.5 500 force"
+                        },
+                        {
+
+                            "type": "origins:play_sound",
+                            "category": "players",
+                            "sound": "coraa:shadow_harvest",
+                            "volume": 9
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "execute as @s at @s positioned ~ ~ ~ run particle minecraft:soul ~ ~ ~ 0 0 0 0.5 500 force"
+                        },
+                        {
+                                        "type": "origins:change_resource",
+                                        "resource": "coraa:seeker_bar",
+                                        "change": 0,
+                                        "operation": "set"
+                        },
+                        {
+                                        "type": "origins:change_resource",
+                                        "resource": "coraa:resentment_bar",
+                                        "change": -10,
+                                        "operation": "add"
+                        },
+                        {
+                        "type": "origins:area_of_effect",
+                "radius": 9,
+                "shape": "sphere",
+                "bientity_action": {
+                    "type": "origins:and",
+                    "actions": [
+                        {
+                            "type": "origins:damage",
+                            "amount": 5,
+                            "damage_type": "coraa:schattenslash"
+                        },
+                        
+                        {
+                            "type": "origins:target_action",
+                            "action": {
+                                "type": "origins:area_of_effect",
+                                "radius": 10,
+                                "bientity_action": {
+                                    "type": "origins:target_action",
+                                    "action": {
+                                        "type": "origins:change_resource",
+                                        "resource": "coraa:heaven_hell_power/shadow_harv_bar",
+                                        "change": 1,
+                                        "operation": "add"
+                                }
+                                },
+                                "bientity_condition": {
+                                    "type": "origins:target_condition",
+                                    "condition": {
+                                        "type": "origins:nbt",
+                                        "nbt": "{Tags: [\"harvesting_them_soul\"]}"
+                                    }
+                                }
+                            }
+                        },
+                        {
+                                                                  "type": "origins:target_action",
+                                      "action": {
+                                        "type": "origins:apply_effect",
+                                        "effect": {
+                                          "effect": "minecraft:slowness",
+                                          "duration": 70,
+                                          "amplifier": 2
+                                        }
+                                      }
+                        },
+                        {
+                           "type": "origins:target_action",
+                           "action": {
+                            "type": "origins:execute_command",
+                            "command": "execute as @s at @s positioned ~ ~1.5 ~ run function coraa:small_lastern_spark"
+                           } 
+                        }
+                    ]
+                }
+                        },
+                        {
+                            "type": "origins:execute_command",
+                            "command": "power revoke @s coraa:startlag_slower"
+                        },
+                        {
+                            "type": "origins:delay",
+                            "ticks": 1,
+                            "action": {
+                                                "type": "origins:execute_command",
+                "command": "tag @s remove harvesting_them_soul"
+                            }
+                        }
+                    ]
+                }
+            }
+        ]
+    },  
+    "cooldown": 20,
+    "hidden": true,
+    "condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                        "type": "origins:resource",
+        "resource": "coraa:resentment_bar",
+        "comparison": ">=",
+        "compare_to": 10
+            },
+            {
+                        "type": "origins:resource",
+        "resource": "coraa:seeker_bar",
+        "comparison": "==",
+        "compare_to": 1
+            }
+        ]
+    }
+}

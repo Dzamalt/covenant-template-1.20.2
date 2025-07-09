@@ -1,0 +1,12 @@
+{
+        "powers": [
+        "coraa:heaven_hell_power/gift_cancel"
+    ],
+    "icon":{
+                "item": "minecraft:barrier"
+    },
+    "impact": 2,
+    "order": 1,
+    "name": "Patience",
+    "description":"Save the gift for another time."
+}

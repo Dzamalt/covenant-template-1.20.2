@@ -1,0 +1,24 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:sculk_catalyst"
+    },
+    "title": "Fallen Incarnate",
+    "description": "Select an Abyss origins. It only goes deeper from here.",
+    "background": "minecraft:textures/block/warped_stem.png",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+    "parent": "coraa:main/covenant",
+  "criteria": {
+    "asdfasdf": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [],
+  "rewards": {
+    "experience": 1
+  }
+}

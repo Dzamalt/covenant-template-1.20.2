@@ -1,0 +1,28 @@
+{
+    "type": "origins:action_over_time",
+    "condition": {
+        "type": "origins:resource",
+        "resource": "coraa:heaven_hell_power/shadow_harv_bar",
+        "comparison": ">=",
+        "compare_to": 1
+    },
+    "interval": 5,
+    "entity_action": {
+        "type": "origins:and",
+        "actions": [
+            {
+                                        "type": "origins:change_resource",
+                                        "resource": "coraa:heaven_hell_power/shadow_harv_bar",
+                                        "change": -1,
+                                        "operation": "add"
+            },
+            {
+                                                        "type": "origins:change_resource",
+                                        "resource": "coraa:resentment_bar",
+                                        "change": 7,
+                                        "operation": "add"
+            }
+        ]
+    },
+    "hidden": true
+}

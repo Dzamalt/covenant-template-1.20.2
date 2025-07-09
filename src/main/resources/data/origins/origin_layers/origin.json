@@ -1,6 +1,7 @@
 {
   "replace": false,
   "origins": [
-    "coraa:lastern"
+    "coraa:lastern",
+    "coraa:solenne"
   ]
 }

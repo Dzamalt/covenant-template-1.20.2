@@ -1,0 +1,12 @@
+{
+        "type": "origins:overlay",
+    "texture": "coraa:textures/misc/overlay/viggenette.png",
+    "strength": 1,
+    "red": 1,
+    "green": 1,
+    "blue": 1,
+    "draw_mode": "texture",
+    "draw_phase": "below_hud",
+    "hide_with_hud": false,
+    "visible_in_third_person": true
+}

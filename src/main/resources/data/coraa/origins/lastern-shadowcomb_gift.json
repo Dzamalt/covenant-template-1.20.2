@@ -1,0 +1,18 @@
+{
+                    "powers": [
+        "coraa:heaven_hell_power/shadow_harvest",
+        "coraa:heaven_hell_power/shadow_harvester",
+        "coraa:heaven_hell_power/shadow_harv_bar"
+    ],
+    "icon":{
+
+                "item": "minecraft:diamond",
+    "tag": "{CustomModelData:696801,Enchantments:[{}]}"
+    },
+    "impact": 2,
+    "order": 2,
+    "name": "§d§l✦Night Harvest✦§r",
+    "description":["§d§oReap them for what they worth. \n§r§7While in §d§oSuchende Gestalt§7, press (", 
+    {"keybind": "key.origins.secondary_active"}
+    ,"§7) to consume §1Resentment§7 and engulf foes in area. For each enemies hit, harvest their §1Resentment"]
+}

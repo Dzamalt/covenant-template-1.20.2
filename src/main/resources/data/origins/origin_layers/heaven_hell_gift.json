@@ -1,0 +1,74 @@
+{
+    "order": 7,
+    "origins": [
+        {
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                                        "type": "origins:origin",
+                "layer": "origins:origin",
+                "origin": "coraa:lastern"
+                    },
+                    {
+                        "type": "origins:resource",
+                        "resource": "coraa:heaven_hell_power/gift_trigger_is_choosing_coraa_stuff",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    {
+                        "type": "origins:equipped_item",
+                        "equipment_slot": "mainhand",
+                        "item_condition": {
+                "type": "origins:nbt",
+                "nbt": "{heavenHellGift:1b}"
+                        }
+                    }
+                ]
+            },
+            "origins": [
+                "coraa:lastern-shadowcomb_gift",
+                "coraa:lastern-ghostlunge_gift",
+                "coraa:lastern-obscureterror_gift",
+                "coraa:cancel_gift"
+            ]
+        },
+        {
+                        "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                                        "type": "origins:origin",
+                "layer": "origins:origin",
+                "origin": "coraa:solenne"
+                    },
+                    {
+                                                "type": "origins:resource",
+                        "resource": "coraa:heaven_hell_power/gift_trigger_is_choosing_coraa_stuff",
+                        "comparison": "==",
+                        "compare_to": 1
+                    },
+                    {
+                        "type": "origins:equipped_item",
+                        "equipment_slot": "mainhand",
+                        "item_condition": {
+                "type": "origins:nbt",
+                "nbt": "{heavenHellGift:1b}"
+                        }
+                    }
+                ]
+            },
+            "origins": [
+                "coraa:cancel_gift"
+            ]
+        }
+    ],
+    "enabled": true,
+    "name": "Choose your Heaven Hell sent Gift.",
+    "gui_title": {
+        "choose_origin": "Choose your Heaven Hell sent Gift.",
+        "view_origin": "This is your Heaven Hell sent Gift."
+    },
+    "missing_name": "None",
+    "missing_description": "You currently have not received your §dHeaven Hell sent Gift§7."
+}

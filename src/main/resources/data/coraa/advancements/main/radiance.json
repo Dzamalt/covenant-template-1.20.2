@@ -1,0 +1,24 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "title": "Absolute Radiant",
+    "description": "Select a Radiance origins. Divination shall be reality -- no matter the cost.",
+    "background": "minecraft:textures/block/warped_stem.png",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+    "parent": "coraa:main/covenant",
+  "criteria": {
+    "asdfasdf": {
+      "trigger": "minecraft:impossible"
+    }
+  },
+  "requirements": [],
+  "rewards": {
+    "experience": 1
+  }
+}

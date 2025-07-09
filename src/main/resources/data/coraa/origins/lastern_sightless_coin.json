@@ -1,0 +1,13 @@
+{
+        "powers": [
+        "coraa:coin_description/lastern_sightless"
+    ],
+    "icon":{
+                "item": "minecraft:gold_nugget",
+    "tag": "{CustomModelData:696803}"
+    },
+    "impact": 1,
+    "order": 1,
+    "name": "Coin of the §0Sightless",
+    "description":"The coin fates you §0sightless§7. Sacrifice §cthe shadow§7 for §apower§7."
+}

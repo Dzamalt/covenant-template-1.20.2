@@ -1,0 +1,38 @@
+{
+        "type": "origins:action_over_time",
+    "interval": 5,
+    "entity_action": {
+        "type": "origins:area_of_effect",
+            "bientity_condition": {
+        "type": "origins:and",
+        "conditions": [
+            {
+                                    "type": "origins:relative_rotation",
+                    "actor_rotation": "head",
+                    "target_rotation": "head",
+                    "comparison": ">=",
+                    "compare_to": 0.4
+            },
+            {
+                "type": "origins:can_see"
+            },
+            {
+                "type": "origins:distance",
+                "comparison": "<=",
+                "compare_to": 20
+            }
+        ]
+    },
+    "radius": 20,
+    "shape": "sphere",
+    "bientity_action": {
+        "type": "origins:target_action",
+        "action": {
+
+            "type": "origins:execute_command",
+            "command": "execute as @s at @s positioned ~ ~3 ~ facing entity @p eyes run function coraa:unseen_indic"
+        }
+    }
+    },
+    "hidden": true
+}

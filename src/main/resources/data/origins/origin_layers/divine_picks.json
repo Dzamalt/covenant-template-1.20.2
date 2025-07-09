@@ -1,0 +1,65 @@
+{
+    "order": 7,
+    "origins": [
+        {
+            "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                                        "type": "origins:origin",
+                "layer": "origins:origin",
+                "origin": "coraa:lastern"
+                    },
+                    {
+                        "type": "origins:equipped_item",
+                        "equipment_slot": "mainhand",
+                        "item_condition": {
+                "type": "origins:nbt",
+                "nbt": "{coinOfCovenant:1b}"
+                        }
+                    }
+                ]
+            },
+            "origins": [
+                "coraa:lastern_shade_coin",
+                "coraa:lastern_sightless_coin",
+                "coraa:lastern_unrestrained_coin",
+                "coraa:cancel_coin"
+            ]
+        },
+        {
+                        "condition": {
+                "type": "origins:and",
+                "conditions": [
+                    {
+                                        "type": "origins:origin",
+                "layer": "origins:origin",
+                "origin": "coraa:solenne"
+                    },
+
+                    {
+                        "type": "origins:equipped_item",
+                        "equipment_slot": "mainhand",
+                        "item_condition": {
+                "type": "origins:nbt",
+                "nbt": "{coinOfCovenant:1b}"
+                        }
+                    }
+                ]
+            },
+            "origins": [
+                "coraa:solenne_blaze_coin",
+                "coraa:solenne_precise_coin",
+                "coraa:solenne_unwavering_coin"
+            ]
+        }
+    ],
+    "enabled": false,
+    "name": "Accept Divine Intervention?",
+    "gui_title": {
+        "choose_origin": "Accept Divine Intervention?",
+        "view_origin": "This is your Divine Intervention"
+    },
+    "missing_name": "None",
+    "missing_description": "You're not supposed to see this."
+}

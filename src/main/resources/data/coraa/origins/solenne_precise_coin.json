@@ -1,0 +1,13 @@
+{
+                    "powers": [
+        "coraa:coin_description/solenne_precise"
+    ],
+    "icon":{
+                "item": "minecraft:gold_nugget",
+    "tag": "{CustomModelData:696803}"
+    },
+    "impact": 1,
+    "order": 1,
+    "name": "Coin of the §dPrecise",
+    "description":"The coin fates you §dPrecise§7. §aTake them down§7 before they §crush you down§7."
+}
