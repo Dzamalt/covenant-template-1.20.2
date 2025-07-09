@@ -263,6 +263,18 @@
         }
       }
     },
+  "early_bow": {
+    "type": "origins:starting_equipment",
+    "stacks": [
+      {
+        "item": "minecraft:bow"
+      },
+      {
+        "item": "minecraft:arrow",
+        "amount": 32
+      }
+    ]
+  },
   "callback_team":{
     "type": "origins:action_on_callback",
     "entity_action_gained": {
